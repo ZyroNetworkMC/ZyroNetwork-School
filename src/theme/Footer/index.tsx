@@ -70,7 +70,7 @@ function Footer(): JSX.Element | null {
             <h3 style={{ color: 'white', fontWeight: 700, marginBottom: '1.5rem' }}>Learn</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <li><Link to="/tutorials" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#a855f7'} onMouseOut={(e) => e.currentTarget.style.color = 'inherit'}>All Courses</Link></li>
-              <li><Link to="/docs/php/introduction" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#a855f7'} onMouseOut={(e) => e.currentTarget.style.color = 'inherit'}>PHP Fundamentals</Link></li>
+              <li><Link to="/docs/php/fundamentals/introduction" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#a855f7'} onMouseOut={(e) => e.currentTarget.style.color = 'inherit'}>PHP Fundamentals</Link></li>
               <li><Link to="/docs/python/introduction" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#a855f7'} onMouseOut={(e) => e.currentTarget.style.color = 'inherit'}>Python Scripting</Link></li>
               <li><Link to="/docs/linux/introduction" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#a855f7'} onMouseOut={(e) => e.currentTarget.style.color = 'inherit'}>Linux Administration</Link></li>
             </ul>

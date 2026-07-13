@@ -15,7 +15,7 @@ const Tutorials: Tutorial[] = [
   {
     title: 'PHP',
     description: 'Learn PHP fundamentals, OOP principles, and modern backend development practices.',
-    website: 'php/introduction',
+    website: 'php/fundamentals/introduction',
     source: ' ',
     tags: ['development'],
     section: 'courses'
