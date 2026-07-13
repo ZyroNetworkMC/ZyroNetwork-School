@@ -180,10 +180,10 @@ false
 | != | Not Equal |
 | !== | Not Identical |
 | > | Greater Than |
-| < | Less Than |
+| &lt; | Less Than |
 | >= | Greater Equal |
-| <= | Less Equal |
-| <=> | Spaceship |
+| &lt;= | Less Equal |
+| &lt;=&gt; | Spaceship |
 
 ---
 

@@ -233,9 +233,9 @@ Conditions often use operators.
 | != | Not Equal |
 | !== | Not Identical |
 | > | Greater Than |
-| < | Less Than |
+| &lt; | Less Than |
 | >= | Greater Than Equal |
-| <= | Less Than Equal |
+| &lt;= | Less Than Equal |
 
 ---
 
