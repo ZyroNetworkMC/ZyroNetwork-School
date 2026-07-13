@@ -115,10 +115,6 @@ const config: Config = {
 							label: 'ZyroNetwork Discord',
 							href: 'https://discord.gg/YznYkMuRUG',
 						},
-						{
-							label: 'PocketMine Discord',
-							href: 'https://discord.gg/XDugAkJ',
-						},
 					],
 				},
 				{
