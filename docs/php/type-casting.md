@@ -1,6 +1,6 @@
 ---
 title: PHP Type Casting
-sidebar_label: Type Casting
+sidebar_label: "8. Type Casting"
 sidebar_position: 8
 description: Learn how to convert one data type into another in PHP.
 ---

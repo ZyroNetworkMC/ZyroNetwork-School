@@ -1,6 +1,7 @@
 ---
 title: PHP Exceptions
 sidebar_position: 19
+sidebar_label: "19. PHP Exceptions"
 ---
 
 # PHP Exceptions

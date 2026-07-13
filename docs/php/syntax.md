@@ -1,6 +1,7 @@
 ---
 title: PHP Syntax
 sidebar_position: 3
+sidebar_label: "3. PHP Syntax"
 ---
 
 # PHP Syntax

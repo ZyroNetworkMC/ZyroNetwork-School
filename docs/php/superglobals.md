@@ -1,6 +1,7 @@
 ---
 title: PHP Superglobals
 sidebar_position: 16
+sidebar_label: "16. PHP Superglobals"
 ---
 
 # PHP Superglobals

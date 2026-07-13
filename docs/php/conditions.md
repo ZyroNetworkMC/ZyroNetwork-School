@@ -1,6 +1,6 @@
 ---
 title: PHP Conditions
-sidebar_label: Conditions
+sidebar_label: "10. Conditions"
 sidebar_position: 10
 description: Learn conditional statements in PHP including if, else, elseif, switch and match expressions.
 ---

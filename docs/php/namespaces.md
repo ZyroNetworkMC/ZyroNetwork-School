@@ -1,6 +1,7 @@
 ---
 title: PHP Namespaces
 sidebar_position: 20
+sidebar_label: "20. PHP Namespaces"
 ---
 
 # PHP Namespaces

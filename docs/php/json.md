@@ -1,6 +1,7 @@
 ---
 title: PHP JSON
 sidebar_position: 18
+sidebar_label: "18. PHP JSON"
 ---
 
 # PHP JSON

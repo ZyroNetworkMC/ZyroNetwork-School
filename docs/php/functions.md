@@ -1,6 +1,6 @@
 ---
 title: PHP Functions
-sidebar_label: Functions
+sidebar_label: "12. Functions"
 sidebar_position: 12
 description: Learn PHP functions from beginner to advanced level with real-world examples and PocketMine use cases.
 ---

@@ -1,6 +1,7 @@
 ---
 title: PHP File Handling
 sidebar_position: 17
+sidebar_label: "17. PHP File Handling"
 ---
 
 # PHP File Handling

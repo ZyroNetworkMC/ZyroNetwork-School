@@ -1,6 +1,6 @@
 ---
 title: PHP Operators
-sidebar_label: Operators
+sidebar_label: "9. Operators"
 sidebar_position: 9
 description: Learn PHP operators including arithmetic, comparison, logical, assignment and bitwise operators.
 ---

@@ -1,6 +1,7 @@
 ---
 title: PHP Installation
 sidebar_position: 2
+sidebar_label: "2. PHP Installation"
 ---
 
 # Installing PHP

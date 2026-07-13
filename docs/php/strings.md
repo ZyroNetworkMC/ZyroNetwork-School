@@ -1,6 +1,6 @@
 ---
 title: PHP Strings
-sidebar_label: Strings
+sidebar_label: "14. Strings"
 sidebar_position: 14
 description: Learn PHP strings in detail including manipulation, formatting, functions and real-world examples.
 ---

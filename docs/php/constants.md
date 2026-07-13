@@ -1,6 +1,6 @@
 ---
 title: PHP Constants
-sidebar_label: Constants
+sidebar_label: "6. Constants"
 sidebar_position: 6
 description: Learn PHP constants, magic constants, and best practices.
 ---

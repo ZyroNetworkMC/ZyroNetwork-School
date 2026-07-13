@@ -1,6 +1,6 @@
 ---
 title: PHP Arrays
-sidebar_label: Arrays
+sidebar_label: "15. Arrays"
 sidebar_position: 15
 description: Learn PHP Arrays in complete detail including indexed arrays, associative arrays, multidimensional arrays, array functions, performance and real-world PocketMine examples.
 ---

@@ -1,6 +1,6 @@
 ---
 title: PHP Data Types
-sidebar_label: Data Types
+sidebar_label: "7. Data Types"
 sidebar_position: 7
 description: Learn all PHP data types in detail.
 ---

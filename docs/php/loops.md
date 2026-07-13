@@ -1,6 +1,6 @@
 ---
 title: PHP Loops
-sidebar_label: Loops
+sidebar_label: "11. Loops"
 sidebar_position: 11
 description: Learn PHP loops including for, while, do-while, foreach and loop control statements.
 ---

@@ -1,6 +1,7 @@
 ---
 title: Composer
 sidebar_position: 21
+sidebar_label: "21. Composer"
 ---
 
 # Composer

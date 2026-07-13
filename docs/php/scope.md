@@ -1,6 +1,6 @@
 ---
 title: PHP Variable Scope
-sidebar_label: Variable Scope
+sidebar_label: "13. Variable Scope"
 sidebar_position: 13
 description: Learn how variables behave inside functions, classes and global contexts in PHP.
 ---

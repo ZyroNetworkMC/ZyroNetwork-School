@@ -1,6 +1,7 @@
 ---
 title: PHP Variables
 sidebar_position: 5
+sidebar_label: "5. PHP Variables"
 ---
 
 # PHP Variables
