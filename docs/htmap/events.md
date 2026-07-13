@@ -1,132 +1,103 @@
 ---
-title: Events
+title: Events & Listeners
 sidebar_label: Events
 sidebar_position: 5
 ---
-# Events
-<!-- TODO LATER
-PocketMine-MP has an events' system which allows plugins to react to, modify the outcome of, and prevent the result of events.
 
-## How it works
-1. Something registers a handler for a given event.
-2. Just before the event takes place, the handler is called and passed an object containing information about the event. This allows handlers to react to, modify (and in some cases prevent) an event from taking place.
-3. The event takes place (or does not take place if cancelled) as defined by the object which contains the event information.
+# Mastering Event Listeners
 
-:::note
-All event handlers are currently executed before the event takes place. This is a common pitfall of PocketMine-MP plugin developers - when an event handler is executed, the actual event has not yet taken place.
-:::
--->
+Events are the true powerhouse of PocketMine-MP plugins! Whenever something happens in the game—a player joining, breaking a block, or taking damage—the server fires an **Event**.
 
-:::note
-Please see the [PMMP Docs](https://doc.pmmp.io/en/rtfd/developer-reference/events.html) for explanation on how events works. This section currently only explains an example on how to create an event. This will be updated in the future.
-:::
+By creating a **Listener**, your plugin can intercept these events to monitor, modify, or even completely cancel them!
+
+## How Events Work
+1. **The Trigger**: A player breaks a diamond block.
+2. **The Interception**: PocketMine pauses the action and passes an object containing details (who broke it, what block it was) to any registered Listeners.
+3. **Your Logic**: You check if the player has permission. If they don't, you **cancel** the event!
+4. **The Outcome**: Because you cancelled it, the block break is reverted on the player's screen, and the block remains intact.
 
 ## Creating an Event Listener Class
 
-Create a new file named `EventListener.php` inside the directory where your Main class file is located at. Then open the file and add this code (replace the namespace with your plugin's namespace):
+Create a new file named `EventListener.php` in the same folder as your `Main.php` class.
 
-```php title="EventListener.php"
+```php title="src/EventListener.php"
 <?php
 
-namespace YourPluginName\YourName;
+declare(strict_types=1);
+
+namespace ZyroNetwork\ExamplePlugin;
 
 use pocketmine\event\Listener;
 
 class EventListener implements Listener {
-
+    // Event handling methods will go here
 }
 ```
+
+> [!NOTE]
+> Any class that handles events **must** implement the `pocketmine\event\Listener` interface!
 
 ## Creating an Event Handling Method
 
-We're going to use `PlayerMoveEvent` as an example.
+Let's use `PlayerMoveEvent` as an example to freeze players in place. 
 
-First, import the `PlayerMoveEvent` class:
-
-```php title="EventListener.php"
+First, import the class:
+```php
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\utils\TextFormat;
 ```
 
-Second, add a method with `PlayerMoveEvent $event` as its argument. You can use any method name you like, but the method must be public and must return `void` This time we're going to use `onPlayerMove`:
+Then, create a public method that accepts the event object as an argument. The method name can be anything, but we recommend naming it after the event (e.g., `onPlayerMove`).
 
-```php title="EventListener.php"
-public function onPlayerMove(PlayerMoveEvent $event): void
-{
-
-}
+```php
+    public function onPlayerMove(PlayerMoveEvent $event) : void {
+        // Our logic goes here!
+    }
 ```
 
-:::tip
-You can set the event priority when multiple handlers from different plugins needs to execute at the same time. For more information, please visit the [PMMP Docs page](https://doc.pmmp.io/en/rtfd/developer-reference/events/priority.html).
-:::
+## Handling & Cancelling the Event
 
-:::note 
-As of April 13, the documentation is incomplete, so if you want to know more about it, please ask in PMMP's Discord server.
-:::
+In this example, we want to freeze a player and spam them with their coordinates! But before we do that, we should respect other plugins. If another plugin already cancelled this event, we should stop our logic.
 
-## Handling the Event
-
-In this example, we want to print the player's origin and target location in the player's chat, and cancel the event to prevent the player from moving.
-
-Before that, we need to check if the event has been cancelled by another plugin. If it's indeed has been cancelled, we'd like to stop the event handling. To do that, add this code into the method we've just created:
-
-```php title="EventListener.php"
-if($event->isCancelled()) { // Checks if the event has been cancelled by another plugin
-    return; // Stops the event handling
-}
-```
-
-Now we can do what we wanted safely. Please add this code under the code we've just added:
-
-```php title="EventListener.php"
-$player = $event->getPlayer(); // Saves the player instance as a variable to make the code a bit cleaner
-$player->sendMessage("From: " . $event->getFrom()); // This should call the Location->__toString() method
-$player->sendMessage("To: " . $event->getTo());
-
-$event->cancel(); // Cancels the event to prevent the player from moving
-```
-
-___
-
-After doing the three sections above, your `EventListener` class should look like these:
-
-```php title="EventListener.php"
-<?php
-
-namespace YourPluginName\YourName;
-
-use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerMoveEvent;
-
-class EventListener implements Listener{
-    public function onPlayerMove(PlayerMoveEvent $event): void{
-        if($event->isCancelled()){ // Checks if the event has been cancelled by another plugin
-            return; // Stops the event handling
+```php
+    public function onPlayerMove(PlayerMoveEvent $event) : void {
+        // 1. Check if the event is already cancelled
+        if($event->isCancelled()) { 
+            return; 
         }
         
-        $player = $event->getPlayer(); // Saves the player instance as a variable to make the code a bit cleaner
-        $player->sendMessage("From: " . $event->getFrom()); // This should call the Location->__toString() method
-        $player->sendMessage("To: " . $event->getTo());
+        $player = $event->getPlayer();
+        
+        // 2. We can call methods on the Event object to get data!
+        $from = $event->getFrom();
+        $to = $event->getTo();
 
-        $event->cancel(); // Cancels the event to prevent the player from moving
+        // Send them a message
+        $player->sendMessage(TextFormat::RED . "You are frozen! You tried to move from X:" . $from->getFloorX() . " to X:" . $to->getFloorX());
+
+        // 3. Cancel the event to completely stop them from moving
+        $event->cancel(); 
     }
-}
 ```
 
-If not, please check again what you may have missed before continuing.
+> [!CAUTION]
+> **Performance Warning**: `PlayerMoveEvent` fires dozens of times per second per player. Be very careful with the code you put inside here. Heavy math or database queries in a move event will instantly lag your server!
 
-## Registering the Event Listener Class
+## Registering the Listener
 
-To make our `EventListener` class work, we need to register it in our Main class, specifically while our plugin is enabling (that is, in the `onEnable` method).
+Just creating the class isn't enough; we need to tell the server that it exists! 
 
-To do that, please open your Main class, then add this code in your `onEnable` method:
+Head back to your `Main.php` file and register the events inside the `onEnable` method:
 
-```php title="Main.php"
-$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+```php title="src/Main.php"
+    protected function onEnable() : void {  
+        // Register our new EventListener class
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+        
+        $this->getLogger()->info("Events Registered!");
+    }
 ```
 
-This time we don't need to import the `EventListener` class, because it's located in the same directory as our Main class. Please always keep this in mind.
+## Conclusion
 
-___
-
-Congratulations, you've created your first event listener class and handler. Now you're ready to test it!
+You now know how to intercept gameplay mechanics! Try experimenting with `BlockBreakEvent`, `PlayerJoinEvent`, and `EntityDamageEvent`. The possibilities are absolutely limitless.

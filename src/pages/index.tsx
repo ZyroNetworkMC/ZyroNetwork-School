@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
 	return (
 		<Layout
 			title={`Hello from ${siteConfig.title}`}
-			description="A Website To Teach You Everything About PocketMine-MP"
+			description="A Website To Teach You Everything About PocketMine-MP by ZyroNetwork"
 		>
 			{/* <HomepageHeader />
 			<main>
@@ -41,8 +41,8 @@ export default function Home(): JSX.Element {
 			</main> */}
 			<div className="hero">
 				<div className="container">
-					<h2 className="hero__title">Pocketmine School</h2>
-					<p className="hero__subtitle">Learn how to use the Pocketmine API!</p>
+					<h2 className="hero__title">ZyroNetwork School</h2>
+					<p className="hero__subtitle">Learn how to use the PocketMine-MP API and build advanced Minecraft Bedrock plugins!</p>
 					<Link href='tutorials' className={clsx('button', styles.heroBtn)}>Get Started</Link>
 				</div>
 			</div>

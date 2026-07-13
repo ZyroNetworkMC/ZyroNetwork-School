@@ -1,0 +1,20 @@
+{
+    "name": "ZyroNetwork School Sandbox",
+    "image": "mcr.microsoft.com/devcontainers/php:8.1",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "php.validate.executablePath": "/usr/local/bin/php"
+            },
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "xdebug.php-debug"
+            ]
+        }
+    },
+    "postCreateCommand": "npm install",
+    "forwardPorts": [3000, 19132]
+}

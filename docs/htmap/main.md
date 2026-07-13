@@ -1,64 +1,100 @@
 ---
-title: Main
+title: The Main Class
 sidebar_label: Main
 sidebar_position: 4
 ---
-# Main
 
-In [plugin.yml](plugin.yml.md#main) we added a path `main`. Now depending on the path we added for this tutorial, we will first create a folder called `YourPluginName` in the src folder and in this folder we will create another folder called `YourName` and in this folder we will create a file called `Main` with the extension `.php` 
+# The Main Class: Core of Your Plugin
 
-Now lets start adding some code to `Main.php`.
+The Main class is the entry point for your PocketMine-MP plugin. Whenever the server starts up and loads your plugin, this is the very first class it looks for (as defined in your `plugin.yml`).
 
-## Namespace
-Here you would add the sub-folders of the src dictionary. Based off `main` path in [plugin.yml](plugin.yml.md#main).
-```php title="Main.php"
+A solid understanding of the Main class is critical to writing professional, stable Bedrock plugins!
+
+## Setting up the Namespace
+
+In PHP, a namespace acts like a directory path to your classes, preventing naming conflicts with other plugins. Based on the `main` path defined in your `plugin.yml`, you should set up your namespace accordingly.
+
+```php title="src/Main.php"
 <?php
 
-namespace YourPluginName\YourName;
+declare(strict_types=1);
+
+namespace ZyroNetwork\ExamplePlugin;
 ```
 
-## Use Statement
-In a new line you will now add a `use` statement.
-```php title="Main.php"
+> [!TIP]
+> **Strict Types**: Notice the `declare(strict_types=1);` statement? Starting with PMMP API 4/5, enforcing strict types is highly recommended to catch type-related bugs early!
+
+## Importing the Base Class
+
+Every PocketMine-MP plugin main class must extend `PluginBase`. We use the `use` statement to import it.
+
+```php title="src/Main.php"
 use pocketmine\plugin\PluginBase;
 ```
-This statement is used to enable our plugin.
 
-## Class
-We will now add the `class`. In the `class` we will be able to enable your plugin. But to enable your plugin you need to extend your `class`.
-```php title="Main.php"
-class Main extends PluginBase { }
+## The Class Definition
+
+Now we declare our class. It must match the name of the file (`Main.php` -> `class Main`) and extend `PluginBase`.
+
+```php title="src/Main.php"
+class Main extends PluginBase {
+    // We will place our code inside here!
+}
 ```
 
-## Function
-In the `class` we will add a function to enable your plugin and to do so we will be using the `onEnable()` function like so:
-```php title="Main.php"
+## Lifecycle Methods
+
+PocketMine-MP triggers specific methods during the lifecycle of your plugin:
+- `onLoad()`: Called when the plugin is first loaded, before the server is fully started. Use this for extremely early setup.
+- `onEnable()`: Called when the plugin is fully enabled. This is where you register events, commands, and start tasks!
+- `onDisable()`: Called when the server shuts down or the plugin is disabled. Use this to save data or clean up.
+
+Let's implement `onEnable()` to print a beautiful message to the server console!
+
+```php title="src/Main.php"
 class Main extends PluginBase { 
 
-    protected function onEnable() : void 
-    {  
-        $this->getLogger()->info("Plugin has been Enabled");
+    protected function onEnable() : void {  
+        // We use the built-in getLogger() method to write to the console
+        $this->getLogger()->info("ZyroNetwork Example Plugin has been Enabled!");
+        $this->getLogger()->notice("Ready to process events and commands!");
+    }
+
+    protected function onDisable() : void {
+        $this->getLogger()->warning("ZyroNetwork Example Plugin has been Disabled!");
+    }
+}
+```
+
+> [!IMPORTANT]
+> **Void Return Types**: In PocketMine-MP API 5 (and PHP 8.1+), lifecycle methods like `onEnable()` **must** specify the `: void` return type. Failing to do this will cause your plugin to crash on startup!
+
+## The Final Result
+
+Putting it all together, your `Main.php` should look exactly like this:
+
+```php title="src/Main.php"
+<?php
+
+declare(strict_types=1);
+
+namespace ZyroNetwork\ExamplePlugin;
+
+use pocketmine\plugin\PluginBase;
+
+class Main extends PluginBase { 
+
+    protected function onEnable() : void {  
+        $this->getLogger()->info("ZyroNetwork Example Plugin has been Enabled!");
+        $this->getLogger()->notice("Ready to process events and commands!");
+    }
+
+    protected function onDisable() : void {
+        $this->getLogger()->warning("ZyroNetwork Example Plugin has been Disabled!");
     }
 
 }
 ```
 
-At the end your `Main.php` file should look like this:
-```php title="Main.php"
-<?php
-
-namespace YourPluginName\YourName;
-
-use pocketmine\plugin\PluginBase;
-
-class Main extends PluginBase { 
-
-    protected function onEnable() : void
-    {  
-        $this->getLogger()->info("Plugin has been Enabled");
-    }
-
-}
-```
-
-Now when you start your server your console should have a message saying `Plugin has been Enabled`.
+When you start your server, you should see your custom, color-coded log messages right in your console! Welcome to the world of PocketMine-MP development.

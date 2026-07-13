@@ -44,6 +44,20 @@ const Tutorials: Tutorial[] = [
     website: 'pharynx',
     source: ' ',
     tags: ['api'],
+  },
+  {
+    title: 'Nukkit',
+    description: 'Learn how to create plugins for Nukkit servers in Java',
+    website: 'nukkit',
+    source: ' ',
+    tags: ['development'],
+  },
+  {
+    title: 'Dragonfly',
+    description: 'Learn how to create plugins for Dragonfly servers in Go',
+    website: 'dragonfly',
+    source: ' ',
+    tags: ['development'],
   }
 ];
 

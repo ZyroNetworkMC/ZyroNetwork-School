@@ -5,12 +5,12 @@ import type {Options as IdealImageOptions} from '@docusaurus/plugin-ideal-image'
 import tailwindPlugin from "./plugins/tailwind-config.cjs";
 
 const config: Config = {
-	title: 'PocketMine-School',
-	tagline: 'A Website To Teach Everything About PocketMine-MP',
+	title: 'ZyroNetwork School',
+	tagline: 'A Website To Teach Everything About PocketMine-MP by ZyroNetwork',
 	favicon: 'img/favicon.ico',
 
 	// Set the production url of your site here
-	url: 'https://pocektmineschool.com',
+	url: 'https://zyro.network',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: '/',
@@ -46,7 +46,7 @@ const config: Config = {
 				docs: {
 					breadcrumbs: false,
 					sidebarPath: 'sidebars.ts',
-					editUrl: 'https://github.com/Amblydia/Pocketmine-School/tree/main',
+					editUrl: 'https://github.com/ZyroNetworkMC/PocketMine-School/tree/main',
 				},
 				blog: {
 					showReadingTime: true,
@@ -59,7 +59,7 @@ const config: Config = {
 	],
 
 	themeConfig: {
-		image: 'img/pocketmineschool.png',
+		image: 'img/zyro_logo.png',
 		colorMode: {
 			defaultMode: 'dark',
 			disableSwitch: false,
@@ -72,9 +72,9 @@ const config: Config = {
 		},
 		navbar: {
 			logo: {
-				alt: 'Pocketmine School',
-				src: 'img/pocketmineschool.png',
-				srcDark: 'img/pocketmineschool-wbg.png',
+				alt: 'ZyroNetwork School',
+				src: 'img/zyro_logo.png',
+				srcDark: 'img/zyro_logo.png',
 			},
 			items: [
 				{
@@ -88,12 +88,12 @@ const config: Config = {
 					label: 'Blogs',
 				},
 				{
-					href: 'https://github.com/Amblydia/Pocketmine-School', 
+					href: 'https://github.com/ZyroNetworkMC/PocketMine-MP', 
 					position: 'right',
 					className: 'github-icon pseudo-icon',
 				},
 				{
-					href: 'https://discord.gg/nhZANhHdBV', 
+					href: 'https://discord.gg/YznYkMuRUG', 
 					position: 'right',
 					className: 'discord-icon pseudo-icon',
 				},
@@ -105,8 +105,8 @@ const config: Config = {
 					title: 'Community',
 					items: [
 						{
-							label: 'PocketMine School Discord',
-							href: 'https://discord.gg/nhZANhHdBV',
+							label: 'ZyroNetwork Discord',
+							href: 'https://discord.gg/YznYkMuRUG',
 						},
 						{
 							label: 'PocketMine Discord',
@@ -119,12 +119,12 @@ const config: Config = {
 					items: [
 						{
 							label: 'Github',
-							href: 'https://github.com/Amblydia/Pocketmine-School',
+							href: 'https://github.com/ZyroNetworkMC/PocketMine-MP',
 						},
 					],
 				},
 			],
-			copyright: `Copyright © ${new Date().getFullYear()} <strong><a href="https://github.com/Amblydia">Amblydia</a></strong>.`,
+			copyright: `Copyright © ${new Date().getFullYear()} <strong>ZyroNetwork</strong>.`,
 		},
 		prism: {
 			theme: prismThemes.github,

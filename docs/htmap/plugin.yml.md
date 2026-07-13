@@ -24,7 +24,7 @@ Add this code into your `plugin.yml` file, replacing `YourPluginName` with a plu
 ```yml title="plugin.yml"
 name: YourPluginName
 version: 1.0.0
-api: 4.0.0
+api: 5.0.0
 main: YourPluginName\YourName\Main
 ```
 
@@ -193,7 +193,7 @@ After following this topic, your final `plugin.yml` file should look something l
 ```yml title="plugin.yml"
 name: YourPluginName
 version: 1.0.0
-api: 4.0.0
+api: 5.0.0
 main: YourPluginName\YourName\Main
 author: YourName
 description: Description
