@@ -53,7 +53,7 @@ const config: Config = {
 				docs: {
 					breadcrumbs: false,
 					sidebarPath: 'sidebars.ts',
-					editUrl: 'https://github.com/ZyroNetworkMC/PocketMine-School/tree/main',
+					editUrl: 'https://github.com/ZyroNetworkMC/ZyroNetwork-School/tree/main',
 				},
 				blog: {
 					showReadingTime: true,

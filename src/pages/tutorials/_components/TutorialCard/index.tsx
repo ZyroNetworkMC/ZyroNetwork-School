@@ -6,6 +6,7 @@ import {Tags, TagList, type TagType, type Tutorial} from '@site/src/data/tutoria
 import {sortBy} from '@site/src/utils/jsUtils';
 import Heading from '@theme/Heading';
 import FavoriteIcon from '../FavoriteIcon';
+import {useFavorites} from '../../_utils';
 import styles from './styles.module.css';
 
 function TagItem({
@@ -43,6 +44,9 @@ function TutorialCardTag({tags}: {tags: TagType[]}) {
 }
 
 function TutorialCard({tutorial}: {tutorial: Tutorial}) {
+    const {favorites, toggleFavorite} = useFavorites();
+    const isFavorite = favorites.includes(tutorial.title) || tutorial.tags.includes('favorite');
+
 	return (
 		<li key={tutorial.title} className="card shadow--md">
 			<div className="card__body">
@@ -52,9 +56,20 @@ function TutorialCard({tutorial}: {tutorial: Tutorial}) {
 							{tutorial.title}
 						</Link>
 					</Heading>
-					{tutorial.tags.includes('favorite') && (
+					<button 
+					  onClick={() => toggleFavorite(tutorial.title)} 
+					  style={{
+					    background: 'none', 
+					    border: 'none', 
+					    cursor: 'pointer', 
+					    padding: 0,
+					    opacity: isFavorite ? 1 : 0.3,
+					    transition: 'opacity 0.2s'
+					  }}
+					  title="Toggle Favorite"
+					>
 						<FavoriteIcon size="medium" style={{marginRight: '0.25rem'}} />
-					)}
+					</button>
 				</div>
 				<p className={styles.tutorialCardBody}>{tutorial.description}</p>
 			</div>

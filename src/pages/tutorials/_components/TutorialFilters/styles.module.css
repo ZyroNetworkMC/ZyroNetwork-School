@@ -44,3 +44,19 @@
 .tagListItem:last-child {
   margin-right: 0;
 }
+
+@media (max-width: 768px) {
+  .headingRow {
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .headingButtons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-left: 0;
+  }
+  .headingButtons > * {
+    margin-left: 0;
+  }
+}

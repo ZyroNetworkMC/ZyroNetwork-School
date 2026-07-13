@@ -1,4 +1,4 @@
-import {useCallback, useMemo} from 'react';
+import {useCallback, useMemo, useState, useEffect} from 'react';
 import {translate} from '@docusaurus/Translate';
 import {
   usePluralForm,
@@ -60,20 +60,81 @@ function filterUsers({
   });
 }
 
+const FAVORITES_STORAGE_KEY = 'zyro_school_favorites';
+
+export function useFavorites() {
+  const [favorites, setFavorites] = useState<string[]>([]);
+
+  const loadFavorites = useCallback(() => {
+    try {
+      const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
+      if (stored) setFavorites(JSON.parse(stored));
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadFavorites();
+    const handleStorageChange = () => loadFavorites();
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('favorites_updated', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('favorites_updated', handleStorageChange);
+    };
+  }, [loadFavorites]);
+
+  const toggleFavorite = useCallback((tutorialTitle: string) => {
+    setFavorites((prevFavorites) => {
+      let newFavorites;
+      if (prevFavorites.includes(tutorialTitle)) {
+        newFavorites = prevFavorites.filter((t) => t !== tutorialTitle);
+      } else {
+        newFavorites = [...prevFavorites, tutorialTitle];
+      }
+      try {
+        localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(newFavorites));
+        window.dispatchEvent(new Event('favorites_updated'));
+      } catch (e) {
+        console.error(e);
+      }
+      return newFavorites;
+    });
+  }, []);
+
+  return {favorites, toggleFavorite};
+}
+
 export function useFilteredUsers() {
   const [tags] = useTags();
   const [searchName] = useSearchName();
   const [operator] = useOperator();
-  return useMemo(
-    () =>
-      filterUsers({
-        users: sortedUsers,
-        tags: tags as TagType[],
-        operator,
-        searchName,
-      }),
-    [tags, operator, searchName],
-  );
+  const {favorites} = useFavorites();
+
+  return useMemo(() => {
+    // Inject local favorites into the tutorial tags before filtering
+    const usersWithDynamicFavorites = sortedUsers.map((user) => {
+      const hasFavTag = user.tags.includes('favorite');
+      const isLocalFav = favorites.includes(user.title);
+      
+      if (isLocalFav && !hasFavTag) {
+        return {...user, tags: [...user.tags, 'favorite' as TagType]};
+      }
+      if (!isLocalFav && hasFavTag) {
+        // If it was hardcoded but they un-favorited it, remove it (optional, but good UX)
+        return {...user, tags: user.tags.filter(t => t !== 'favorite')};
+      }
+      return user;
+    });
+
+    return filterUsers({
+      users: usersWithDynamicFavorites,
+      tags: tags as TagType[],
+      operator,
+      searchName,
+    });
+  }, [tags, operator, searchName, favorites]);
 }
 
 export function useSiteCountPlural() {
