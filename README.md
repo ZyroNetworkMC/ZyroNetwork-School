@@ -36,7 +36,7 @@ Our CI/CD pipeline will automatically build and deploy your approved changes to 
 
 ## 📜 License & Credits
 
-Designed and maintained with passion by the **ZyroNetwork team**,**jeantkg** and **nk-archives**
+Designed and maintained with passion by the **ZyroNetwork**,**jeantkg** and **nk-archives**
 All educational content and site design is Copyright © ZyroNetwork.
 
 [Join the ZyroNetwork Discord](https://discord.gg/YznYkMuRUG) | [ZyroNetworkMC GitHub](https://github.com/ZyroNetworkMC)
