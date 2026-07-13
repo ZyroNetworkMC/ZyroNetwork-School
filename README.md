@@ -1,41 +1,42 @@
-# ZyroNetwork School Website
+<div align="center">
+  <img src="static/img/zyro_logo.png" alt="ZyroNetwork School" width="128" />
+  <h1>ZyroNetwork School</h1>
+  <p><strong>The ultimate, highly detailed learning hub for Minecraft Bedrock development.</strong></p>
+  
+  [![Deploy to GitHub Pages](https://github.com/ZyroNetworkMC/ZyroNetwork-School/actions/workflows/deploy.yml/badge.svg)](https://github.com/ZyroNetworkMC/ZyroNetwork-School/actions/workflows/deploy.yml)
+</div>
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+---
 
-### Installation
+Welcome to the **ZyroNetwork School** open-source repository! This project serves as the central documentation and learning platform for the ZyroNetwork community. 
 
-```
-$ yarn
-```
+Our mission is to provide the most comprehensive, easy-to-read, and detailed guides for creating plugins on various high-performance Bedrock server softwares like PocketMine-MP, Nukkit, and Dragonfly.
 
-### Local Development
+## 🚀 Features
 
-```
-$ yarn start
-```
+- **Extremely Detailed Guides**: Deep dives into APIs, lifecycle events, commands, and modern standards (like strict typing in PHP 8.1+).
+- **Practical Sandboxes**: No installation required! Instantly launch a browser-based VS Code environment via GitHub Codespaces to test code live.
+- **Mobile Optimized**: Built on a modern static site architecture (Docusaurus) for lightning-fast, responsive reading anywhere.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## 💻 Practical Sandbox (Develop in Browser)
 
-### Build
+Want to start coding immediately without downloading any software? 
 
-```
-$ yarn build
-```
+Simply click the **Code** button at the top of this repository, select the **Codespaces** tab, and launch a new codespace. You will be greeted with a fully provisioned VS Code instance in your browser loaded with PHP 8.1, ready to run a test PocketMine-MP server!
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## 🤝 Contributing
 
-### Deployment
+This is an open-source initiative by the ZyroNetwork team, and we welcome contributions from everyone! If you spot a typo, want to improve a tutorial, or wish to add a brand new guide:
 
-Using SSH:
+1. Fork this repository.
+2. Edit the Markdown (`.md`) files inside the `docs/` or `blog/` directories.
+3. Submit a Pull Request.
 
-```
-$ USE_SSH=true yarn deploy
-```
+Our CI/CD pipeline will automatically build and deploy your approved changes to the live website.
 
-Not using SSH:
+## 📜 License & Credits
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
+Designed and maintained with passion by the **ZyroNetwork team**.
+All educational content and site design is Copyright © ZyroNetwork.
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+[Join the ZyroNetwork Discord](https://discord.gg/YznYkMuRUG) | [ZyroNetworkMC GitHub](https://github.com/ZyroNetworkMC)
