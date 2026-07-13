@@ -15,7 +15,7 @@ const Tutorials: Tutorial[] = [
     description: 'Learn classes, interfaces, inheritance, namespaces, strict typing, and design patterns used in real plugin codebases.',
     website: 'php/introduction',
     source: ' ',
-    tags: ['development'],
+    tags: ['development', 'favorite'],
   },
   {
     title: 'Python Scripting',
@@ -29,7 +29,28 @@ const Tutorials: Tutorial[] = [
     description: 'Master the command line, process management, networking, and hosting for production game servers.',
     website: 'linux/introduction',
     source: ' ',
-    tags: ['serversetup'],
+    tags: ['serversetup', 'favorite'],
+  },
+  {
+    title: 'Advanced Plugin Development',
+    description: 'Master custom packet handling, world generation, and asynchronous tasks in Minecraft Bedrock plugins.',
+    website: 'php/advanced',
+    source: ' ',
+    tags: ['development', 'api'],
+  },
+  {
+    title: 'Database Management',
+    description: 'Learn how to securely integrate MySQL and SQLite databases into your game server plugins.',
+    website: 'php/advanced',
+    source: ' ',
+    tags: ['serversetup', 'development'],
+  },
+  {
+    title: 'Web Integration',
+    description: 'Build robust REST APIs and webhooks to connect your game server to Discord and web dashboards.',
+    website: 'python/scripting',
+    source: ' ',
+    tags: ['api', 'development'],
   }
 ];
 

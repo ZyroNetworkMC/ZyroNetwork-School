@@ -145,13 +145,15 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: '#0f172a',
+          background: 'linear-gradient(180deg, #0d0e12 0%, #1a1025 100%)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           transition: 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
           transform: getTransform(),
+          borderBottom: '2px solid rgba(168, 85, 247, 0.5)',
+          boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
         }}>
           <div style={{
             opacity: isCovering ? 1 : 0,
@@ -161,8 +163,8 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
             alignItems: 'center',
             gap: '1.5rem'
           }}>
-            <img src="/img/zyronetwork.png" alt="ZyroNetwork" style={{ width: '120px', height: '120px' }} />
-            <h1 style={{ color: 'white', margin: 0, fontSize: '3rem', fontWeight: 'bold' }}>ZyroNetwork School</h1>
+            <img src="/img/zyro_logo.png" alt="ZyroNetwork" style={{ width: '140px', height: '140px', filter: 'drop-shadow(0 0 20px rgba(168, 85, 247, 0.4))' }} />
+            <h1 style={{ color: 'white', margin: 0, fontSize: '3.5rem', fontWeight: '900', letterSpacing: '-1px' }}>ZyroNetwork School</h1>
           </div>
         </div>
       )}
@@ -173,10 +175,11 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
           position: 'absolute',
           top: clickCoords.y,
           left: clickCoords.x,
-          width: '10px',
-          height: '10px',
+          width: '12px',
+          height: '12px',
           borderRadius: '50%',
-          backgroundColor: '#7c3aed',
+          background: 'radial-gradient(circle, #c084fc 0%, #7c3aed 100%)',
+          boxShadow: '0 0 30px 10px rgba(124, 58, 237, 0.8)',
           transform: getTransform(),
           transition: 'transform 0.6s cubic-bezier(0.5, 0, 0.1, 1)',
         }} />
@@ -190,7 +193,8 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: '#06b6d4',
+          background: 'rgba(13, 14, 18, 0.95)',
+          backdropFilter: 'blur(20px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -206,8 +210,8 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
             alignItems: 'center',
             gap: '1.5rem'
           }}>
-            <img src="/img/zyronetwork.png" alt="ZyroNetwork" style={{ width: '100px', height: '100px', filter: 'brightness(0) invert(1)' }} />
-            <h2 style={{ color: 'white', margin: 0, fontSize: '2.5rem', fontWeight: 'bold' }}>Loading Next Course...</h2>
+            <img src="/img/zyro_logo.png" alt="ZyroNetwork" style={{ width: '120px', height: '120px', filter: 'drop-shadow(0 0 20px rgba(168, 85, 247, 0.4))' }} />
+            <h2 style={{ color: 'white', margin: 0, fontSize: '2.5rem', fontWeight: '800' }}>Loading Next Course...</h2>
           </div>
         </div>
       )}

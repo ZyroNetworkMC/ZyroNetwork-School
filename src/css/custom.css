@@ -157,21 +157,37 @@ html[data-theme="dark"]:root {
    NAVBAR — Glassmorphism (Dark)
    ============================================ */
 html[data-theme="dark"] .navbar {
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    background: rgba(13, 14, 18, 0.85) !important;
+    background: transparent !important;
     border-bottom: 1px solid rgba(168, 85, 247, 0.15) !important;
+}
+
+html[data-theme="dark"] .navbar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(13, 14, 18, 0.85);
+    z-index: -1;
 }
 
 /* ============================================
    NAVBAR — Clean Glass (Light)
    ============================================ */
 html[data-theme="light"] .navbar {
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: transparent !important;
     border-bottom: 1px solid #e5e7eb !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+html[data-theme="light"] .navbar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
 }
 
 .navbar__link {
@@ -305,11 +321,6 @@ body {
 /* ============================================
    MOBILE HAMBURGER MENU FIX
    ============================================ */
-html.navbar-sidebar--show .navbar {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-}
-
 .navbar-sidebar {
     background: var(--ifm-background-color) !important;
 }
