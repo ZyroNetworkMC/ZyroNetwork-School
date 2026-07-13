@@ -7,50 +7,84 @@ export type Tutorial = {
   website: string;
   source: string | null;
   tags: TagType[];
+  section: 'courses' | 'game-server';
 };
 
 const Tutorials: Tutorial[] = [
+  // COURSES
   {
-    title: 'PHP OOP Fundamentals',
-    description: 'Learn classes, interfaces, inheritance, namespaces, strict typing, and design patterns used in real plugin codebases.',
+    title: 'PHP',
+    description: 'Learn PHP fundamentals, OOP principles, and modern backend development practices.',
     website: 'php/introduction',
     source: ' ',
-    tags: ['development', 'favorite'],
+    tags: ['development'],
+    section: 'courses'
   },
   {
-    title: 'Python Scripting',
-    description: 'Automate server workflows, generate config templates, and build admin tools with Python scripts.',
+    title: 'Linux Fundamentals',
+    description: 'Master the command line, process management, and server administration.',
+    website: 'linux/introduction',
+    source: ' ',
+    tags: ['serversetup'],
+    section: 'courses'
+  },
+  {
+    title: 'Python',
+    description: 'Automate workflows, build tools, and learn modern Python programming.',
     website: 'python/introduction',
     source: ' ',
     tags: ['development'],
+    section: 'courses'
   },
   {
-    title: 'Linux & Server Administration',
-    description: 'Master the command line, process management, networking, and hosting for production game servers.',
-    website: 'linux/introduction',
+    title: 'Java',
+    description: 'Master Object-Oriented Programming and robust enterprise Java architecture.',
+    website: 'java/introduction',
     source: ' ',
-    tags: ['serversetup', 'favorite'],
+    tags: ['development'],
+    section: 'courses'
   },
   {
-    title: 'Advanced Plugin Development',
-    description: 'Master custom packet handling, world generation, and asynchronous tasks in Minecraft Bedrock plugins.',
-    website: 'php/advanced',
+    title: 'Ethical Hacking',
+    description: 'Learn penetration testing, vulnerabilities, and offensive security techniques.',
+    website: 'ethical-hacking/introduction',
+    source: ' ',
+    tags: ['development'],
+    section: 'courses'
+  },
+  {
+    title: 'CyberSecurity',
+    description: 'Defend infrastructure, configure firewalls, and implement security best practices.',
+    website: 'cybersecurity/introduction',
+    source: ' ',
+    tags: ['serversetup'],
+    section: 'courses'
+  },
+  
+  // GAME SERVER DEVELOPMENT
+  {
+    title: 'PocketMine-MP',
+    description: 'Build custom Minecraft Bedrock plugins using PocketMine-MP and PHP.',
+    website: 'pocketmine-mp/introduction',
     source: ' ',
     tags: ['development', 'api'],
+    section: 'game-server'
   },
   {
-    title: 'Database Management',
-    description: 'Learn how to securely integrate MySQL and SQLite databases into your game server plugins.',
-    website: 'php/advanced',
+    title: 'Nukkit',
+    description: 'Create Java-based plugins for Nukkit servers and learn the Java API.',
+    website: 'nukkit/introduction',
     source: ' ',
-    tags: ['serversetup', 'development'],
+    tags: ['development', 'api'],
+    section: 'game-server'
   },
   {
-    title: 'Web Integration',
-    description: 'Build robust REST APIs and webhooks to connect your game server to Discord and web dashboards.',
-    website: 'python/scripting',
+    title: 'DragonFly',
+    description: 'Write high-performance Go-based server software for Minecraft Bedrock.',
+    website: 'dragonfly/introduction',
     source: ' ',
-    tags: ['api', 'development'],
+    tags: ['development'],
+    section: 'game-server'
   }
 ];
 

@@ -216,7 +216,7 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
         </div>
       )}
 
-      {/* 4. Shatter Animation */}
+      {/* 4. Enhanced Shatter Animation */}
       {type === 'shatter' && (
         <div style={{
           position: 'absolute',
@@ -224,18 +224,40 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
           left: 0,
           width: '100%',
           height: '100%',
-          perspective: '1000px'
+          perspective: '1200px',
+          overflow: 'hidden'
         }}>
+          {/* Intense Flashbang Effect (Fades out quickly) */}
+          <div style={{
+            position: 'absolute',
+            top: 0, left: 0, width: '100%', height: '100%',
+            background: 'white',
+            zIndex: 10,
+            opacity: hasCovered.current && !isCovering ? 0 : (isCovering ? 1 : 0),
+            transition: 'opacity 0.15s ease-out',
+            pointerEvents: 'none'
+          }} />
+
           {/* Base Glass Layer (entry phase) */}
           <div style={{
             position: 'absolute',
             top: 0, left: 0, width: '100%', height: '100%',
-            backdropFilter: 'blur(20px)',
-            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(30px) brightness(1.2)',
+            background: 'rgba(255, 255, 255, 0.15)',
+            boxShadow: 'inset 0 0 150px rgba(255,255,255,0.4)',
             opacity: isCovering ? 1 : 0,
-            transition: 'opacity 0.4s ease',
-            display: hasCovered.current && !isCovering ? 'none' : 'block' // Hide when shattering
-          }} />
+            transition: 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            display: hasCovered.current && !isCovering ? 'none' : 'block'
+          }}>
+            {/* SVG Crack Overlay */}
+            {isCovering && (
+              <svg width="100%" height="100%" style={{ position: 'absolute', opacity: 0.8 }}>
+                <path d="M50% 50% L40% 10% M50% 50% L80% 20% M50% 50% L90% 60% M50% 50% L70% 90% M50% 50% L20% 80% M50% 50% L10% 40%" 
+                      stroke="rgba(255,255,255,0.8)" strokeWidth="2" fill="none" 
+                      style={{ animation: 'crackAnim 0.1s forwards' }} />
+              </svg>
+            )}
+          </div>
 
           {/* Shattered Shards (exit phase) */}
           {hasCovered.current && !isCovering && shards.map(shard => (
@@ -243,25 +265,28 @@ function TransitionOverlay({ type, isCovering, clickCoords }: { type: Transition
               position: 'absolute',
               top: '50%',
               left: '50%',
-              width: '150px',
-              height: '150px',
-              marginLeft: '-75px',
-              marginTop: '-75px',
-              background: 'rgba(255, 255, 255, 0.2)',
-              backdropFilter: 'blur(10px)',
-              clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', // Triangle shard
-              boxShadow: 'inset 0 0 20px rgba(255,255,255,0.5)',
-              transform: `translate(${shard.tx}px, ${shard.ty}px) rotate(${shard.rot}deg) scale(0)`,
+              width: '250px',
+              height: '250px',
+              marginLeft: '-125px',
+              marginTop: '-125px',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%)',
+              backdropFilter: 'blur(15px)',
+              clipPath: `polygon(${shard.id % 2 === 0 ? '50% 0%, 0% 100%, 100% 100%' : '0% 0%, 100% 50%, 0% 100%'})`,
+              boxShadow: 'inset 0 0 30px rgba(255,255,255,0.8), 0 10px 30px rgba(0,0,0,0.5)',
+              transform: `translate(${shard.tx * 1.5}px, ${shard.ty * 1.5}px) rotate(${shard.rot * 2}deg) scale(0) translateZ(${shard.tx}px)`,
               opacity: 0,
-              // Start at center, blast out!
-              animation: `shatterAnim 0.6s cubic-bezier(0.2, 1, 0.3, 1) forwards`
+              animation: `shatterAnim 0.8s cubic-bezier(0.1, 1, 0.2, 1) forwards`
             }} />
           ))}
           
           <style>{`
             @keyframes shatterAnim {
-              0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
-              100% { transform: inherit; opacity: 0; }
+              0% { transform: translate(0, 0) rotate(0deg) scale(1.5) translateZ(200px); opacity: 1; filter: brightness(2); }
+              100% { transform: inherit; opacity: 0; filter: brightness(1); }
+            }
+            @keyframes crackAnim {
+              0% { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+              100% { stroke-dasharray: 1000; stroke-dashoffset: 0; }
             }
           `}</style>
         </div>
