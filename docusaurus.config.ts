@@ -10,10 +10,13 @@ const config: Config = {
 	favicon: 'img/favicon.ico',
 
 	// Set the production url of your site here
-	url: 'https://zyro.network',
+	url: 'https://ZyroNetworkMC.github.io',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: '/',
+	baseUrl: '/ZyroNetwork-School/',
+	organizationName: 'ZyroNetworkMC', // Usually your GitHub org/user name.
+	projectName: 'ZyroNetwork-School', // Usually your repo name.
+	trailingSlash: false,
 
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
