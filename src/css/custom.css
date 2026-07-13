@@ -305,8 +305,12 @@ body {
 /* ============================================
    MOBILE HAMBURGER MENU FIX
    ============================================ */
+html.navbar-sidebar--show .navbar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
 .navbar-sidebar {
-    z-index: 200 !important;
     background: var(--ifm-background-color) !important;
 }
 

@@ -7,6 +7,7 @@ import {sortBy} from '@site/src/utils/jsUtils';
 import Heading from '@theme/Heading';
 import FavoriteIcon from '../FavoriteIcon';
 import {useFavorites} from '../../_utils';
+import { useTransition } from '@site/src/theme/Root';
 import styles from './styles.module.css';
 
 function TagItem({
@@ -46,13 +47,21 @@ function TutorialCardTag({tags}: {tags: TagType[]}) {
 function TutorialCard({tutorial}: {tutorial: Tutorial}) {
     const {favorites, toggleFavorite} = useFavorites();
     const isFavorite = favorites.includes(tutorial.title) || tutorial.tags.includes('favorite');
+    const { playTransition } = useTransition();
 
 	return (
 		<li key={tutorial.title} className="card shadow--md">
 			<div className="card__body">
 				<div className={clsx(styles.tutorialCardHeader)}>
 					<Heading as="h4" className={styles.tutorialCardTitle}>
-						<Link to={`/docs/${tutorial.website}`} className={styles.tutorialCardLink}>
+						<Link 
+						  to={`/docs/${tutorial.website}`} 
+						  className={styles.tutorialCardLink}
+						  onClick={(e) => {
+						    e.preventDefault();
+						    playTransition('blast', `/docs/${tutorial.website}`, e as any);
+						  }}
+						>
 							{tutorial.title}
 						</Link>
 					</Heading>

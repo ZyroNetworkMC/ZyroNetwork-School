@@ -11,27 +11,6 @@ export type Tutorial = {
 
 const Tutorials: Tutorial[] = [
   {
-    title: 'PocketMine-MP',
-    description: 'Build custom Minecraft Bedrock plugins using PocketMine-MP and PHP. Covers events, commands, forms, databases, and more.',
-    website: 'htmap',
-    source: '',
-    tags: ['development', 'favorite'],
-  },
-  {
-    title: 'Nukkit',
-    description: 'Create Java-based plugins for Nukkit servers. Ideal for developers coming from a Bukkit or Spigot background.',
-    website: 'nukkit',
-    source: ' ',
-    tags: ['development'],
-  },
-  {
-    title: 'Dragonfly',
-    description: 'Write high-performance Go-based server software and plugins for Minecraft Bedrock Edition with Dragonfly.',
-    website: 'dragonfly',
-    source: ' ',
-    tags: ['development'],
-  },
-  {
     title: 'PHP OOP Fundamentals',
     description: 'Learn classes, interfaces, inheritance, namespaces, strict typing, and design patterns used in real plugin codebases.',
     website: 'php/introduction',

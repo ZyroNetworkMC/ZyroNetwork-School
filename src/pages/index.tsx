@@ -3,9 +3,11 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import { useTransition } from '@site/src/theme/Root';
 
 export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
+  const { playTransition } = useTransition();
   return (
     <Layout
       title="Academy"
@@ -97,6 +99,10 @@ export default function Home(): JSX.Element {
               <Link
                 className="button button--primary button--lg"
                 to="/tutorials"
+                onClick={(e) => {
+                  e.preventDefault();
+                  playTransition('dropdown', '/tutorials', e as any);
+                }}
                 style={{
                   background: 'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)',
                   border: 'none',
