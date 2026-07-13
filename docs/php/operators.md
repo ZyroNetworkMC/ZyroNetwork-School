@@ -2,57 +2,55 @@
 title: PHP Operators
 sidebar_label: Operators
 sidebar_position: 9
-description: Learn all PHP operators in detail.
+description: Learn PHP operators including arithmetic, comparison, logical, assignment and bitwise operators.
 ---
 
 # PHP Operators
 
-Operators are symbols used to perform operations on values and variables.
+Operators are symbols that perform operations on values and variables.
 
 Example:
 
 ```php
-$a = 10;
-$b = 5;
-
-echo $a + $b;
+$a = 5 + 5;
 ```
 
-Output:
+Here:
 
 ```text
-15
++
 ```
+
+is an operator.
 
 ---
 
 # Types of Operators
 
-PHP supports:
+PHP provides many operators:
 
 1. Arithmetic Operators
 2. Assignment Operators
 3. Comparison Operators
-4. Increment/Decrement Operators
-5. Logical Operators
+4. Logical Operators
+5. Increment / Decrement Operators
 6. String Operators
 7. Array Operators
-8. Conditional Operators
-9. Null Operators
-10. Bitwise Operators
+8. Null Operators
+9. Bitwise Operators
 
 ---
 
 # Arithmetic Operators
 
-| Operator | Name | Example |
-|-----------|------|----------|
-| + | Addition | `$a + $b` |
-| - | Subtraction | `$a - $b` |
-| * | Multiplication | `$a * $b` |
-| / | Division | `$a / $b` |
-| % | Modulus | `$a % $b` |
-| ** | Exponent | `$a ** $b` |
+| Operator | Meaning | Example |
+|----------|----------|----------|
+| `+` | Addition | `$a + $b` |
+| `-` | Subtraction | `$a - $b` |
+| `*` | Multiplication | `$a * $b` |
+| `/` | Division | `$a / $b` |
+| `%` | Modulus | `$a % $b` |
+| `**` | Power | `$a ** $b` |
 
 ---
 
@@ -70,7 +68,51 @@ Output:
 
 ---
 
+## Subtraction
+
+```php
+echo 10 - 5;
+```
+
+Output:
+
+```text
+5
+```
+
+---
+
+## Multiplication
+
+```php
+echo 10 * 5;
+```
+
+Output:
+
+```text
+50
+```
+
+---
+
+## Division
+
+```php
+echo 10 / 5;
+```
+
+Output:
+
+```text
+2
+```
+
+---
+
 ## Modulus
+
+Returns remainder.
 
 ```php
 echo 10 % 3;
@@ -82,246 +124,236 @@ Output:
 1
 ```
 
-Useful for:
-
-- Even/Odd checks
-- Cyclic systems
-- Game mechanics
-
 ---
 
-## Exponent
+## Power
 
 ```php
-echo 2 ** 4;
+echo 2 ** 3;
 ```
 
 Output:
 
 ```text
-16
+8
 ```
 
 ---
 
 # Assignment Operators
 
+| Operator | Example |
+|----------|----------|
+| `=` | `$a = 5` |
+| `+=` | `$a += 5` |
+| `-=` | `$a -= 5` |
+| `*=` | `$a *= 5` |
+| `/=` | `$a /= 5` |
+| `%=` | `$a %= 5` |
+| `.=` | `$text .= "Hello"` |
+
 ---
 
-## Simple Assignment
+Example:
 
 ```php
 $a = 10;
-```
 
----
-
-## Add Assignment
-
-```php
 $a += 5;
+
+echo $a;
 ```
 
-Equivalent:
+Output:
 
-```php
-$a = $a + 5;
-```
-
----
-
-## Subtract Assignment
-
-```php
-$a -= 5;
-```
-
----
-
-## Multiply Assignment
-
-```php
-$a *= 2;
-```
-
----
-
-## Divide Assignment
-
-```php
-$a /= 2;
-```
-
----
-
-## Concatenation Assignment
-
-```php
-$name .= " Parmar";
+```text
+15
 ```
 
 ---
 
 # Comparison Operators
 
-These return:
-
-```text
-true
-false
-```
-
----
-
 | Operator | Meaning |
-|-----------|----------|
-| == | Equal |
-| === | Identical |
-| != | Not Equal |
-| !== | Not Identical |
-| > | Greater Than |
-| < | Less Than |
-| >= | Greater Equal |
-| <= | Less Equal |
-| <=> | Spaceship |
+|----------|----------|
+| `==` | Equal |
+| `===` | Identical |
+| `!=` | Not Equal |
+| `!==` | Not Identical |
+| `>` | Greater Than |
+| `<` | Less Than |
+| `>=` | Greater Than Equal |
+| `<=` | Less Than Equal |
+| `<=>` | Spaceship Operator |
 
 ---
 
-# Equal Operator
+## Equal
 
 ```php
-10 == "10"
-```
-
-Output:
-
-```text
-true
-```
-
----
-
-# Identical Operator
-
-```php
-10 === "10"
-```
-
-Output:
-
-```text
-false
-```
-
-Types are different.
-
----
-
-⚠ Always prefer:
-
-```php
-===
-```
-
-especially in PocketMine.
-
----
-
-# Spaceship Operator
-
-```php
-echo 10 <=> 5;
-```
-
-Output:
-
-```text
-1
+5 == "5";
 ```
 
 Returns:
 
 ```text
+true
+```
+
+---
+
+## Identical
+
+```php
+5 === "5";
+```
+
+Returns:
+
+```text
+false
+```
+
+---
+
+## Spaceship Operator
+
+```php
+echo 1 <=> 2;
+```
+
+Output:
+
+```text
 -1
+```
+
+```php
+echo 2 <=> 2;
+```
+
+Output:
+
+```text
 0
+```
+
+```php
+echo 3 <=> 2;
+```
+
+Output:
+
+```text
 1
-```
-
----
-
-# Increment Operators
-
----
-
-## Pre Increment
-
-```php
-++$a
-```
-
----
-
-## Post Increment
-
-```php
-$a++
 ```
 
 ---
 
 # Logical Operators
 
+| Operator | Meaning |
+|----------|----------|
+| `&&` | AND |
+| `||` | OR |
+| `!` | NOT |
+| `and` | AND |
+| `or` | OR |
+| `xor` | XOR |
+
 ---
 
 ## AND
 
 ```php
-$a && $b
-```
-
-Both must be true.
-
----
-
-## OR
-
-```php
-$a || $b
-```
-
-One must be true.
-
----
-
-## NOT
-
-```php
-!$a
-```
-
-Reverses boolean.
-
----
-
-# Example
-
-```php
-$isAdmin = true;
-$isOnline = true;
-
-if (
-    $isAdmin &&
-    $isOnline
-) {
+if ($online && $staff) {
 
 }
 ```
 
 ---
 
-# String Operators
+## OR
+
+```php
+if ($admin || $owner) {
+
+}
+```
 
 ---
+
+## NOT
+
+```php
+if (!$banned) {
+
+}
+```
+
+---
+
+# Increment Operators
+
+```php
+$a++;
+```
+
+---
+
+# Decrement Operators
+
+```php
+$a--;
+```
+
+---
+
+# Pre Increment
+
+```php
+++$a;
+```
+
+---
+
+# Post Increment
+
+```php
+$a++;
+```
+
+Difference:
+
+```php
+$a = 5;
+
+echo ++$a;
+```
+
+Output:
+
+```text
+6
+```
+
+---
+
+```php
+$a = 5;
+
+echo $a++;
+```
+
+Output:
+
+```text
+5
+```
+
+---
+
+# String Operators
 
 ## Concatenation
 
@@ -329,65 +361,57 @@ if (
 echo "Hello " . "World";
 ```
 
-Output:
-
-```text
-Hello World
-```
-
 ---
 
 ## Concatenation Assignment
 
 ```php
-$name .= " Parmar";
+$text = "Hello";
+
+$text .= " World";
 ```
 
 ---
 
 # Array Operators
 
----
-
-## Union
-
-```php
-$a + $b;
-```
+| Operator | Meaning |
+|----------|----------|
+| `+` | Union |
+| `==` | Equal |
+| `===` | Identical |
 
 ---
 
-## Equality
+Example:
 
 ```php
-$a == $b;
-```
+$a = [
+    "name" => "Aayan"
+];
 
----
+$b = [
+    "rank" => "Owner"
+];
 
-## Identity
-
-```php
-$a === $b;
+$c = $a + $b;
 ```
 
 ---
 
 # Null Coalescing Operator
 
-PHP 7+
-
 ```php
-$username =
-$_GET["user"] ?? "Guest";
+$name =
+$_GET["name"] ?? "Guest";
 ```
 
-Equivalent:
+---
+
+# Null Safe Operator (PHP 8)
 
 ```php
-if (
-    isset($_GET["user"])
-)
+$user?->getProfile()?->getName();
 ```
 
 ---
@@ -396,58 +420,70 @@ if (
 
 ```php
 $status =
-$isOnline
+$online
 ? "Online"
 : "Offline";
 ```
 
 ---
 
-# Null Safe Operator
-
-PHP 8+
-
-```php
-$player?->getName();
-```
-
-Avoids:
-
-```text
-Call to member function on null
-```
-
----
-
 # Bitwise Operators
 
-Advanced operators.
-
-```php
-&
-|
-^
-~
-<<
->>
-```
-
-Used in:
-
-- Permissions
-- Flags
-- Packets
-- Network Protocols
+| Operator | Meaning |
+|----------|----------|
+| `&` | AND |
+| `|` | OR |
+| `^` | XOR |
+| `~` | NOT |
+| `<<` | Left Shift |
+| `>>` | Right Shift |
 
 ---
 
-# PocketMine Example
+# Operator Precedence
+
+```php
+echo 5 + 5 * 2;
+```
+
+Output:
+
+```text
+15
+```
+
+because:
+
+```text
+5 + (5 * 2)
+```
+
+---
+
+# Using Parentheses
+
+```php
+echo (5 + 5) * 2;
+```
+
+Output:
+
+```text
+20
+```
+
+---
+
+# PocketMine Examples
+
+Permission Check:
 
 ```php
 if (
-    $player->isOnline()
-    &&
-    !$player->isBanned()
+    $sender->hasPermission(
+        "zyro.admin"
+    ) &&
+    $sender instanceof Player
 ) {
 
 }
@@ -455,97 +491,61 @@ if (
 
 ---
 
-# Common Mistakes
-
----
-
-❌
+Economy:
 
 ```php
-if ($rank = "admin")
-```
-
-Assignment.
-
----
-
-✅
-
-```php
-if ($rank === "admin")
+$money += 1000;
 ```
 
 ---
 
-❌
+Chat:
 
 ```php
-10 == "10"
+$message .= "!";
 ```
-
----
-
-✅
-
-```php
-10 === "10"
-```
-
----
-
-# Best Practices
-
-✅ Prefer:
-
-```php
-===
-!==
-```
-
----
-
-✅ Use null coalescing.
-
----
-
-✅ Use parentheses.
 
 ---
 
 # Exercises
 
 1. Add two numbers.
-2. Check if a number is even.
-3. Create login conditions.
-4. Use ternary operator.
+2. Check if player is staff.
+3. Use ternary operator.
+4. Practice spaceship operator.
 
 ---
 
 # Quiz
 
-### What does:
-
-```php
-10 === "10"
-```
-
-return?
-
 <details>
-<summary>Answer</summary>
+<summary>Which operator concatenates strings?</summary>
 
-false
+```text
+.
+```
 
 </details>
 
 ---
 
-### What operator joins strings?
+<details>
+<summary>Which operator checks identical values?</summary>
+
+```text
+===
+```
+
+</details>
+
+---
 
 <details>
-<summary>Answer</summary>
+<summary>Which operator provides default values?</summary>
 
-.
+```text
+??
+```
 
 </details>
 
