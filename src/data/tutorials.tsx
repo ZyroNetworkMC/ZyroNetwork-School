@@ -11,43 +11,43 @@ export type Tutorial = {
 
 const Tutorials: Tutorial[] = [
   {
-    title: 'Creating Plugins',
-    description: 'Learn how to create Pocketmine Plugins',
+    title: 'PocketMine-MP',
+    description: 'Build custom Minecraft Bedrock plugins using PocketMine-MP and PHP. Covers events, commands, forms, databases, and more.',
     website: 'htmap',
     source: '',
-    tags: [],
+    tags: ['development', 'favorite'],
   },
   {
     title: 'Nukkit',
-    description: 'Learn how to create plugins for Nukkit servers in Java',
+    description: 'Create Java-based plugins for Nukkit servers. Ideal for developers coming from a Bukkit or Spigot background.',
     website: 'nukkit',
     source: ' ',
     tags: ['development'],
   },
   {
     title: 'Dragonfly',
-    description: 'Learn how to create plugins for Dragonfly servers in Go',
+    description: 'Write high-performance Go-based server software and plugins for Minecraft Bedrock Edition with Dragonfly.',
     website: 'dragonfly',
     source: ' ',
     tags: ['development'],
   },
   {
-    title: 'PHP OOP Basics',
-    description: 'Master Object-Oriented Programming (OOP) in PHP for plugin making',
+    title: 'PHP OOP Fundamentals',
+    description: 'Learn classes, interfaces, inheritance, namespaces, strict typing, and design patterns used in real plugin codebases.',
     website: 'php',
     source: ' ',
     tags: ['development'],
   },
   {
     title: 'Python Scripting',
-    description: 'Automate Minecraft Bedrock servers using Python scripts',
+    description: 'Automate server workflows, generate config templates, and build admin tools with Python scripts.',
     website: 'python',
     source: ' ',
     tags: ['development'],
   },
   {
-    title: 'Linux Server Setup',
-    description: 'Learn how to host and optimize Bedrock servers on Linux',
+    title: 'Linux & Server Administration',
+    description: 'Master the command line, process management, networking, and hosting for production game servers.',
     website: 'linux',
     source: ' ',
     tags: ['serversetup'],
@@ -70,32 +70,32 @@ export type Tag = {
 export const Tags: {[type in TagType]: Tag} = {
   favorite: {
     label: 'Favorite',
-    description: 'idk',
-    color: '#eeeeee',
+    description: 'Community favorites and recommended starting points',
+    color: '#e9669e',
   },
 
   api: {
     label: translate({message: 'Api'}),
     description: translate({
-      message: '',
+      message: 'Tutorials covering the PocketMine-MP API surface',
       id: 'tutorial.tag.api.description',
     }),
-    color: '#eeeeee',
+    color: '#a855f7',
   },
 
   development: {
     label: translate({message: 'Development'}),
     description: translate({
-      message: '',
+      message: 'Plugin development and programming tutorials',
       id: 'tutorial.tag.development.description',
     }),
-    color: '#4267b2',
+    color: '#7c3aed',
   },
 
   serversetup: {
     label: translate({message: 'Server Setup'}),
     description: translate({
-      message: '',
+      message: 'Hosting, deployment, and server administration guides',
       id: 'tutorial.tag.serversetup.description',
     }),
     color: '#14cfc3',
@@ -104,10 +104,10 @@ export const Tags: {[type in TagType]: Tag} = {
   client: {
     label: translate({message: 'Client'}),
     description: translate({
-      message: '',
+      message: 'Client-side modifications and resource packs',
       id: 'tutorial.tag.client.description',
     }),
-    color: '#ffcfc3',
+    color: '#f59e0b',
   },
 };
 

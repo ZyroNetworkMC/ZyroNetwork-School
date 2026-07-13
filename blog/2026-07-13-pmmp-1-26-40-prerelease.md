@@ -1,39 +1,38 @@
 ---
 title: PocketMine-MP 1.26.40 Pre-Release Announcement
-description: The highly anticipated PMMP 1.26.40 pre-release is here on ZyroNetworkMC!
+description: Breaking down the new features, performance improvements, and API changes in the PMMP 1.26.40 pre-release.
 slug: pmmp-1-26-40-prerelease
-authors:
-  - name: AustinKarasu
-    title: ZyroNetwork Lead, ZyroNetwork School Maintainer
-    url: https://github.com/AustinKarasu
-    image_url: https://github.com/AustinKarasu.png
+authors: [AustinKarasu]
 tags: [release, pmmp, zyronetwork]
 image: https://i.imgur.com/mErPwqL.png
 ---
 
-Welcome to the future of Minecraft Bedrock server development! 
+The **ZyroNetwork Team** is proud to share the **PocketMine-MP 1.26.40 Pre-Release** — a major milestone for Bedrock server development.
 
-The **ZyroNetwork Team** is incredibly proud to announce the availability of the **PocketMine-MP 1.26.40 Pre-Release**! This version brings massive improvements to performance, stability, and API architecture that plugin developers have been asking for.
+This version brings meaningful improvements to performance, stability, and the plugin API that the community has been waiting for.
 
 <!-- truncate -->
 
 ## What's New in 1.26.40?
 
-This release introduces groundbreaking features mapped out by the ZyroNetwork engineering team, providing unparalleled speed and reliability for your servers.
+### Asynchronous Networking
+The networking stack has been reworked to reduce main thread blocking. Expect lower latency and fewer tick drops under heavy player loads.
 
-- **Next-Gen Asynchronous Networking**: Drastically reduces main thread lag.
-- **Enhanced Entity AI**: A more robust system for handling mob behaviors and movements.
-- **API 5 Hardening**: Further enforcement of PHP 8.1+ strict typing and return types.
-- **New Vanilla Block Capabilities**: Support for advanced block states.
+### Enhanced Entity AI
+Mob behavior and pathfinding have been overhauled with a cleaner, more extensible system. Plugin developers can now hook into AI goals more easily.
 
-## Where to Get It
+### API 5 Strict Typing
+PHP 8.1+ strict typing is now enforced across all API surfaces. Return types and parameter types are fully declared, making code safer and IDE auto-completion more reliable.
 
-You can download the pre-release from our GitHub organization. Feel free to report any issues or submit PRs!
+### New Vanilla Block Support
+Additional block states and interactions have been mapped, bringing the server closer to vanilla parity for survival gameplay.
+
+## Download & Contribute
+
+Grab the pre-release from the ZyroNetwork GitHub organization:
 
 🔗 **[Get PMMP 1.26.40 on GitHub](https://github.com/ZyroNetworkMC/PocketMine-MP)**
 
-If you have questions or want to discuss this release with the community, join us on our Discord:
+Found a bug or want to contribute? Open an issue or submit a pull request directly on the repository.
 
-💬 **[Join ZyroNetwork Discord](https://discord.gg/YznYkMuRUG)**
-
-A massive thank you to everyone who contributed. Let's build something amazing!
+💬 **[Join the ZyroNetwork Discord](https://discord.gg/YznYkMuRUG)** to discuss this release with the community.
