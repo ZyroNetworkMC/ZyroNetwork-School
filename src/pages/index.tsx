@@ -8,8 +8,8 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Welcome to ${siteConfig.title}`}
-      description="A Premium Development School to Learn Coding, Systems Administration, and Game Plugin Creation by ZyroNetwork"
+      title="Academy"
+      description="The ultimate open-source hub for systems administration, programming languages, and multiplayer game server development. Learn PHP, Python, Linux, and Bedrock plugin creation from scratch."
     >
       <main>
         {/* Hero Section */}
