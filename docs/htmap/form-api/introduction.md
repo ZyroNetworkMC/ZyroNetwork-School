@@ -2,7 +2,6 @@
 title: Introduction
 sidebar_label: Introduction
 sidebar_position: 1
-slug: /form-api
 ---
 ## What's FormAPI?
 

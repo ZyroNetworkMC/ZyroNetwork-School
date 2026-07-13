@@ -2,7 +2,6 @@
 title: Introduction
 sidebar_label: Introduction
 sidebar_position: 1
-slug: /pharynx
 ---
 
 pharynx is a replacement for DevTools/ConsoleScript (+ DEVirion), but better because:

@@ -2,7 +2,6 @@
 title: Introduction To EasyUI
 sidebar_label: Introduction
 sidebar_position: 1
-slug: /easy-ui
 ---
 
 EasyUI is an intuitive and easy-to-use form library for PocketMine-MP. Designed to let you focus on your project and not on how the library works.
@@ -10,7 +9,7 @@ EasyUI is an intuitive and easy-to-use form library for PocketMine-MP. Designed 
 This form library was created by [Dresnite](https://github.com/dresnite)
 
 ## Form Types
-- [Simple Form](easy-ui/simple-form)
+- [Simple Form](./simple-form)
 - Modal Form
 - Custom Form
 
