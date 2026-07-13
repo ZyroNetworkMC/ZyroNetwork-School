@@ -15,57 +15,25 @@ Conditions are used everywhere:
 
 - Login Systems
 - Permissions
-- PocketMine Commands
-- Economy Plugins
 - APIs
-- AntiCheat Systems
+- PocketMine Plugins
 - Authentication
-
----
-
-# Real World Example
-
-```php
-if ($player->isOnline()) {
-    echo "Player is online.";
-}
-```
-
-The program first checks the condition.
-
-If it is true, the code executes.
+- Web Panels
 
 ---
 
 # Boolean Values
 
-Conditions always evaluate into:
+A condition always evaluates into:
 
-```text
+```php
 true
 false
 ```
 
-Example:
-
-```php
-$online = true;
-$money = 100 > 50;
-```
-
 ---
 
-# The if Statement
-
-Syntax:
-
-```php
-if (condition) {
-
-}
-```
-
-Example:
+# if Statement
 
 ```php
 $age = 18;
@@ -83,32 +51,7 @@ Adult
 
 ---
 
-# Multiple Statements
-
-```php
-$health = 20;
-
-if ($health > 0) {
-    echo "Alive";
-    echo "Player can move.";
-}
-```
-
----
-
-# if + else
-
-Syntax:
-
-```php
-if (condition) {
-
-} else {
-
-}
-```
-
-Example:
+# if else
 
 ```php
 $online = false;
@@ -120,19 +63,9 @@ if ($online) {
 }
 ```
 
-Output:
-
-```text
-Player Offline
-```
-
 ---
 
-# elseif Statement
-
-Used when there are multiple possible conditions.
-
-Example:
+# elseif
 
 ```php
 $rank = "vip";
@@ -156,198 +89,152 @@ if ($rank === "owner") {
 }
 ```
 
-Output:
-
-```text
-VIP
-```
-
----
-
-# Execution Flow
-
-```text
-Condition 1 ❌
-      ↓
-Condition 2 ❌
-      ↓
-Condition 3 ✅
-      ↓
-Execute Code
-```
-
-PHP stops checking once a condition becomes true.
-
----
-
-# Nested Conditions
-
-Conditions can be placed inside other conditions.
-
-Example:
-
-```php
-if ($player->isOnline()) {
-
-    if ($player->hasPermission("staff")) {
-
-        echo "Staff Online";
-
-    }
-
-}
-```
-
----
-
-# Example: Login System
-
-```php
-$username = "admin";
-$password = "123";
-
-if (
-    $username === "admin" &&
-    $password === "123"
-) {
-
-    echo "Login Successful";
-
-} else {
-
-    echo "Invalid Credentials";
-
-}
-```
-
 ---
 
 # Comparison Operators
 
-Conditions often use operators.
-
 | Operator | Meaning |
 |----------|----------|
-| == | Equal |
-| === | Identical |
-| != | Not Equal |
-| !== | Not Identical |
-| > | Greater Than |
-| &lt; | Less Than |
-| >= | Greater Than Equal |
-| &lt;= | Less Than Equal |
+| `==` | Equal |
+| `===` | Identical |
+| `!=` | Not Equal |
+| `!==` | Not Identical |
+| `>` | Greater Than |
+| `<` | Less Than |
+| `>=` | Greater Than Equal |
+| `<=` | Less Than Equal |
+
+---
+
+# Examples
+
+## Equal
+
+```php
+$a = 5;
+$b = 5;
+
+if ($a == $b) {
+    echo "Equal";
+}
+```
+
+---
+
+## Identical
+
+```php
+$a = 5;
+$b = "5";
+
+var_dump($a == $b);
+var_dump($a === $b);
+```
+
+Output:
+
+```text
+true
+false
+```
+
+---
+
+## Greater Than
+
+```php
+if ($money > 1000) {
+    echo "Rich";
+}
+```
+
+---
+
+## Less Than
+
+```php
+if ($health < 10) {
+    echo "Low Health";
+}
+```
+
+---
+
+## Greater Than Equal
+
+```php
+if ($level >= 50) {
+    echo "Unlocked";
+}
+```
+
+---
+
+## Less Than Equal
+
+```php
+if ($health <= 0) {
+    echo "Dead";
+}
+```
 
 ---
 
 # Logical Operators
 
----
-
-## AND
-
-```php
-&&
-```
-
-Both conditions must be true.
-
-Example:
-
-```php
-if (
-    $isAdmin &&
-    $isOnline
-) {
-
-}
-```
+| Operator | Meaning |
+|----------|----------|
+| `&&` | AND |
+| `||` | OR |
+| `!` | NOT |
 
 ---
 
-## OR
-
-```php
-||
-```
-
-One condition must be true.
-
-Example:
+# AND Operator
 
 ```php
 if (
-    $isOwner ||
+    $isOnline &&
     $isAdmin
 ) {
 
-}
-```
-
----
-
-## NOT
-
-```php
-!
-```
-
-Reverses a condition.
-
-Example:
-
-```php
-if (!$player->isBanned()) {
+    echo "Staff Member";
 
 }
 ```
 
 ---
 
-# Truthy and Falsy Values
-
-PHP automatically converts values into booleans.
-
----
-
-## False Values
+# OR Operator
 
 ```php
-false
-0
-0.0
-""
-"0"
-[]
-null
+if (
+    $rank === "owner" ||
+    $rank === "admin"
+) {
+
+    echo "Staff";
+
+}
 ```
 
 ---
 
-## True Values
-
-Everything else.
-
-Example:
+# NOT Operator
 
 ```php
-if ("hello") {
-    echo "True";
+if (
+    !$player->isBanned()
+) {
+
+    echo "Allowed";
+
 }
 ```
 
 ---
 
 # Ternary Operator
-
-Short version of if else.
-
-Syntax:
-
-```php
-condition ? true : false
-```
-
-Example:
 
 ```php
 $status =
@@ -356,63 +243,20 @@ $online
 : "Offline";
 ```
 
-Equivalent:
-
-```php
-if ($online) {
-    $status = "Online";
-} else {
-    $status = "Offline";
-}
-```
-
----
-
-# Nested Ternary
-
-```php
-$result =
-$rank === "owner"
-? "Owner"
-: "Player";
-```
-
-Avoid deeply nested ternaries because they become difficult to read.
-
 ---
 
 # Null Coalescing Operator
-
-PHP 7+
-
-Example:
 
 ```php
 $name =
 $_GET["name"] ?? "Guest";
 ```
 
-Equivalent:
-
-```php
-if (isset($_GET["name"])) {
-    $name = $_GET["name"];
-} else {
-    $name = "Guest";
-}
-```
-
 ---
 
 # Switch Statement
 
-Used when comparing multiple values.
-
-Example:
-
 ```php
-$rank = "admin";
-
 switch ($rank) {
 
     case "owner":
@@ -434,34 +278,12 @@ switch ($rank) {
 
 ---
 
-# Why break?
+# Match Expression
 
-Without break:
-
-```php
-case "admin":
-    echo "Admin";
-
-case "vip":
-    echo "VIP";
-```
-
-Output:
-
-```text
-AdminVIP
-```
-
----
-
-# Match Expression (PHP 8+)
-
-Modern replacement for switch.
-
-Example:
+PHP 8+
 
 ```php
-$prefix = match($rank) {
+$prefix = match ($rank) {
 
     "owner" => "[Owner]",
     "admin" => "[Admin]",
@@ -473,34 +295,7 @@ $prefix = match($rank) {
 
 ---
 
-# Advantages of Match
-
-✅ Cleaner syntax
-
-✅ Strict comparison (`===`)
-
-✅ Returns values directly
-
-✅ No break statements
-
----
-
-# Switch vs Match
-
-| Feature | Switch | Match |
-|----------|---------|--------|
-| Uses === | ❌ | ✅ |
-| Returns Value | ❌ | ✅ |
-| Requires break | ✅ | ❌ |
-| Safer | ❌ | ✅ |
-
----
-
-# PocketMine Examples
-
----
-
-## Permission Check
+# PocketMine Example
 
 ```php
 if (
@@ -509,20 +304,8 @@ if (
     )
 ) {
 
-}
-```
-
----
-
-## Player Health
-
-```php
-if (
-    $player->getHealth() <= 5
-) {
-
-    $player->sendMessage(
-        "Low Health!"
+    $sender->sendMessage(
+        "Access Granted"
     );
 
 }
@@ -530,34 +313,15 @@ if (
 
 ---
 
-## Rank Prefix
-
-```php
-$prefix = match(
-    $playerRank
-) {
-
-    "owner" => "§4Owner",
-    "admin" => "§cAdmin",
-    "vip" => "§aVIP",
-
-    default => "§7Player"
-};
-```
-
----
-
-# Authentication Example
+# Login Example
 
 ```php
 if (
-    password_verify(
-        $password,
-        $hash
-    )
+    $username === "admin" &&
+    $password === "123"
 ) {
 
-    echo "Logged In";
+    echo "Login Success";
 
 }
 ```
@@ -566,11 +330,7 @@ if (
 
 # Common Mistakes
 
----
-
-## Mistake 1
-
-❌
+## Wrong
 
 ```php
 if ($rank = "admin")
@@ -580,48 +340,10 @@ This assigns a value.
 
 ---
 
-✅
+## Correct
 
 ```php
 if ($rank === "admin")
-```
-
----
-
-## Mistake 2
-
-❌
-
-```php
-if ($money)
-```
-
-May produce unexpected results.
-
----
-
-Better:
-
-```php
-if ($money > 0)
-```
-
----
-
-## Mistake 3
-
-❌
-
-```php
-if ($a == $b)
-```
-
----
-
-Prefer:
-
-```php
-if ($a === $b)
 ```
 
 ---
@@ -635,9 +357,16 @@ if ($a === $b)
 !==
 ```
 
+instead of:
+
+```php
+==
+!=
+```
+
 ---
 
-✅ Use Match in PHP 8+
+✅ Use Match expressions in PHP 8+
 
 ---
 
@@ -645,142 +374,34 @@ if ($a === $b)
 
 ---
 
-✅ Split large conditions into variables.
-
-Example:
-
-```php
-$isStaff =
-$player->hasPermission(
-    "staff"
-);
-
-if ($isStaff) {
-
-}
-```
-
----
-
 # Exercises
 
----
-
-## Exercise 1
-
-Create:
-
-```php
-$age = 18;
-```
-
-Print:
-
-```text
-Adult
-```
-
-if age is greater than or equal to 18.
-
----
-
-## Exercise 2
-
-Create:
-
-```php
-$isOnline = true;
-```
-
-Print:
-
-```text
-Online
-```
-
----
-
-## Exercise 3
-
-Use:
-
-```php
-switch
-```
-
-to create rank prefixes.
-
----
-
-## Exercise 4
-
-Convert switch into:
-
-```php
-match
-```
-
----
-
-# Mini Project
-
-Create a login system:
-
-```php
-$username
-$password
-```
-
-Validate credentials.
-
----
-
-# Challenge
-
-Create a permission system:
-
-```php
-owner
-admin
-moderator
-vip
-player
-```
-
-Return the correct prefix.
+1. Check if age is adult.
+2. Create rank permission system.
+3. Build login validator.
+4. Convert switch to match.
 
 ---
 
 # Quiz
 
-### Which statement replaces multiple if conditions?
-
 <details>
-<summary>Answer</summary>
+<summary>Which operator checks identical values?</summary>
 
-switch or match
-
-</details>
-
----
-
-### Which operator should be preferred?
-
-<details>
-<summary>Answer</summary>
-
+```text
 ===
+```
 
 </details>
 
 ---
 
-### Does match use strict comparison?
-
 <details>
-<summary>Answer</summary>
+<summary>Which operator means OR?</summary>
 
-Yes, it uses === internally.
+```text
+||
+```
 
 </details>
 
@@ -788,15 +409,9 @@ Yes, it uses === internally.
 
 # References
 
-PHP Conditions:
-
 https://www.php.net/manual/en/control-structures.if.php
 
-Switch:
-
 https://www.php.net/manual/en/control-structures.switch.php
-
-Match:
 
 https://www.php.net/manual/en/control-structures.match.php
 
