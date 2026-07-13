@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzyronetwork_school=self.webpackChunkzyronetwork_school||[]).push([[1903],{1912:o=>{o.exports=JSON.parse('{"blogBasePath":"/ZyroNetwork-School/blog","blogTitle":"Blog","authorsListPath":"/ZyroNetwork-School/blog/authors"}')}}]);

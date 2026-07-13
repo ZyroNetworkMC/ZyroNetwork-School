@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzyronetwork_school=self.webpackChunkzyronetwork_school||[]).push([[6240],{1556:o=>{o.exports=JSON.parse('{"metadata":{"permalink":"/ZyroNetwork-School/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

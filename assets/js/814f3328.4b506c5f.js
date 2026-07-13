@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzyronetwork_school=self.webpackChunkzyronetwork_school||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"PocketMine-MP 1.26.40 Pre-Release Announcement","permalink":"/ZyroNetwork-School/blog/pmmp-1-26-40-prerelease","unlisted":false,"date":"2026-07-13T00:00:00.000Z"}]}')}}]);

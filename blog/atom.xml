@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ZyroNetworkMC.github.io/ZyroNetwork-School/blog</id>
+    <title>ZyroNetwork School Blog</title>
+    <updated>2026-07-13T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://ZyroNetworkMC.github.io/ZyroNetwork-School/blog"/>
+    <subtitle>ZyroNetwork School Blog</subtitle>
+    <icon>https://ZyroNetworkMC.github.io/ZyroNetwork-School/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[PocketMine-MP 1.26.40 Pre-Release Announcement]]></title>
+        <id>https://ZyroNetworkMC.github.io/ZyroNetwork-School/blog/pmmp-1-26-40-prerelease</id>
+        <link href="https://ZyroNetworkMC.github.io/ZyroNetwork-School/blog/pmmp-1-26-40-prerelease"/>
+        <updated>2026-07-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The highly anticipated PMMP 1.26.40 pre-release is here on ZyroNetworkMC!]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to the future of Minecraft Bedrock server development!</p>
+<p>The <strong>ZyroNetwork Team</strong> is incredibly proud to announce the availability of the <strong>PocketMine-MP 1.26.40 Pre-Release</strong>! This version brings massive improvements to performance, stability, and API architecture that plugin developers have been asking for.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-new-in-12640">What's New in 1.26.40?<a href="https://zyronetworkmc.github.io/ZyroNetwork-School/blog/pmmp-1-26-40-prerelease#whats-new-in-12640" class="hash-link" aria-label="Direct link to What's New in 1.26.40?" title="Direct link to What's New in 1.26.40?">​</a></h2>
+<p>This release introduces groundbreaking features mapped out by the ZyroNetwork engineering team, providing unparalleled speed and reliability for your servers.</p>
+<ul>
+<li><strong>Next-Gen Asynchronous Networking</strong>: Drastically reduces main thread lag.</li>
+<li><strong>Enhanced Entity AI</strong>: A more robust system for handling mob behaviors and movements.</li>
+<li><strong>API 5 Hardening</strong>: Further enforcement of PHP 8.1+ strict typing and return types.</li>
+<li><strong>New Vanilla Block Capabilities</strong>: Support for advanced block states.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="where-to-get-it">Where to Get It<a href="https://zyronetworkmc.github.io/ZyroNetwork-School/blog/pmmp-1-26-40-prerelease#where-to-get-it" class="hash-link" aria-label="Direct link to Where to Get It" title="Direct link to Where to Get It">​</a></h2>
+<p>You can download the pre-release from our GitHub organization. Feel free to report any issues or submit PRs!</p>
+<p>🔗 <strong><a href="https://github.com/ZyroNetworkMC/PocketMine-MP" target="_blank" rel="noopener noreferrer">Get PMMP 1.26.40 on GitHub</a></strong></p>
+<p>If you have questions or want to discuss this release with the community, join us on our Discord:</p>
+<p>💬 <strong><a href="https://discord.gg/YznYkMuRUG" target="_blank" rel="noopener noreferrer">Join ZyroNetwork Discord</a></strong></p>
+<p>A massive thank you to everyone who contributed. Let's build something amazing!</p>]]></content>
+        <author>
+            <name>AustinKarasu</name>
+            <uri>https://github.com/AustinKarasu</uri>
+        </author>
+        <category label="release" term="release"/>
+        <category label="pmmp" term="pmmp"/>
+        <category label="zyronetwork" term="zyronetwork"/>
+    </entry>
+</feed>
