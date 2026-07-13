@@ -13,7 +13,7 @@ const config: Config = {
 	url: 'https://ZyroNetworkMC.github.io',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: '/ZyroNetwork-School/',
+	baseUrl: '/',
 	organizationName: 'ZyroNetworkMC', // Usually your GitHub org/user name.
 	projectName: 'ZyroNetwork-School', // Usually your repo name.
 	trailingSlash: false,
