@@ -1,221 +1,285 @@
 ---
-title: Bash Fundamentals & Server Hosting
-sidebar_label: Bash & Hosting
+title: Linux Fundamentals
+sidebar_label: 2. Core Fundamentals
 sidebar_position: 2
 ---
 
-# Ultimate Linux Administration & Bash Guide
+# Core Linux Fundamentals
 
-Hosting Minecraft Bedrock servers at scale requires managing them via the command line interface (CLI) on a Linux system. This guide covers every essential command, process management utility, network configuration, and directory permission structure you need to run high-performance servers, modeled after professional online engineering curriculums.
+To master a Linux server, you must understand how files are structured, how to navigate the filesystem, and how to manage permissions.
 
----
+## The Linux File Hierarchy
 
-## 1. Directory Structure
+Unlike Windows, which uses drive letters (`C:\`, `D:\`), Linux uses a single unified directory tree starting at the "root" directory (`/`).
 
-Linux uses a single unified tree structure where everything starts at the root directory (`/`). 
+| Directory | Purpose |
+|---|---|
+| `/` | The Root directory. Everything starts here. |
+| `/home` | Contains user directories (e.g., `/home/steve`). |
+| `/root` | The home directory for the `root` (admin) user. |
+| `/etc` | System-wide configuration files (e.g., `/etc/ssh/sshd_config`). |
+| `/var` | Variable data, such as logs (`/var/log`) and databases. |
+| `/bin` & `/sbin` | Essential system binaries (commands like `ls`, `cd`). |
+| `/tmp` | Temporary files. Usually wiped on reboot. |
 
-### Minecraft Server Directory Layout
+## Navigating the Filesystem
 
-Here is a visual map of the standard directory path structures utilized when deploying PocketMine-MP, Nukkit, or Dragonfly servers:
+Here are the essential commands for moving around:
 
-```mermaid
-graph TD
-    Root["/ (Root)"] --> Var["/var (Variable Data)"]
-    Root --> Home["/home (User Directories)"]
-    Root --> Etc["/etc (System Configs)"]
-    
-    Var --> VarWw["/var/www (Web Hosting)"]
-    Home --> User["/home/zyro (Zyro User Home)"]
-    Etc --> Systemd["/etc/systemd/system (Service Files)"]
-    
-    User --> Server["/home/zyro/pmmp-server (Minecraft Directory)"]
-    Server --> Plugins["plugins/ (Plugin PHARs)"]
-    Server --> Worlds["worlds/ (Map Regions)"]
-    Server --> Configs["pocketmine.yml (Server Config)"]
+```bash
+# Print Working Directory (Where am I?)
+pwd
+
+# List contents of the current directory
+ls
+
+# List ALL files (including hidden ones that start with a dot, like .bashrc)
+ls -a
+
+# List files with detailed information (permissions, size, owner)
+ls -l
+
+# Change Directory to /home/steve
+cd /home/steve
+
+# Go up one directory level
+cd ..
+
+# Go straight to your user's home directory
+cd ~
+```
+
+## Managing Files and Directories
+
+```bash
+# Create a new empty file
+touch server.properties
+
+# Create a new directory
+mkdir pocketmine_server
+
+# Create a directory and all parent directories if they don't exist
+mkdir -p /home/steve/servers/lobby/plugins
+
+# Copy a file (cp source destination)
+cp server.properties server.properties.backup
+
+# Copy a directory recursively
+cp -r old_world new_world
+
+# Move or Rename a file (mv source destination)
+mv old_name.txt new_name.txt
+mv file.txt /home/steve/
+
+# Remove (Delete) a file FOREVER. There is no recycling bin!
+rm file.txt
+
+# Remove a directory and all its contents FOREVER
+rm -rf old_world/
+```
+:::danger
+`rm -rf /` will delete your entire operating system. Never type it.
+:::
+
+## Viewing and Editing Files
+
+While you can use tools like WinSCP or SFTP to edit files visually, knowing how to do it in the terminal is essential.
+
+### Viewing Content
+```bash
+# Print the entire file to the console
+cat server.properties
+
+# View a file page by page (press 'q' to quit)
+less server.log
+
+# Print only the first 10 lines
+head -n 10 server.log
+
+# Print only the last 10 lines (great for checking recent errors)
+tail -n 10 server.log
+
+# "Follow" the file: print new lines as they are added in real-time!
+tail -f server.log
+```
+
+### Editing with Nano
+`nano` is the easiest terminal text editor for beginners.
+
+```bash
+nano server.properties
+```
+- Use the **arrow keys** to move around.
+- Type to edit.
+- Press **Ctrl+O**, then **Enter** to Save (Write Out).
+- Press **Ctrl+X** to Exit.
+
+## Linux Permissions and Ownership
+
+Linux is a multi-user system. Every file and directory has an **Owner**, a **Group**, and a set of **Permissions**.
+
+Run `ls -l` and look at the left column:
+`-rwxr-xr-- 1 steve admin 1024 Jan 1 12:00 start.sh`
+
+Let's break down `-rwxr-xr--`:
+1. **Type**: The first character. `-` means file, `d` means directory.
+2. **Owner Permissions (`rwx`)**: The user `steve` can Read, Write, and eXecute it.
+3. **Group Permissions (`r-x`)**: Anyone in the `admin` group can Read and eXecute, but not Write.
+4. **Other Permissions (`r--`)**: Everyone else can only Read it.
+
+### Modifying Permissions (`chmod`)
+
+You often need to make scripts executable. `chmod` (Change Mode) alters permissions.
+
+```bash
+# Make a script executable for the owner
+chmod +x start.sh
+
+# Remove write permission for everyone
+chmod -w file.txt
+```
+
+#### The Numeric (Octal) Method
+Permissions can be represented as numbers:
+- Read = 4
+- Write = 2
+- Execute = 1
+
+Add them together! (e.g., Read + Write = 6).
+```bash
+# 7 (Owner: rwx), 5 (Group: r-x), 5 (Others: r-x)
+chmod 755 start.sh
+
+# 6 (Owner: rw-), 4 (Group: r--), 4 (Others: r--)
+chmod 644 config.yml
+```
+
+### Modifying Ownership (`chown`)
+
+If you upload files as the `root` user, but your server runs as the `steve` user, `steve` might not have permission to read them!
+
+```bash
+# Change owner to steve, and group to admin
+chown steve:admin server.properties
+
+# Change ownership of a folder and ALL its contents recursively
+chown -R steve:admin /home/steve/pocketmine_server/
+```
+
+## Finding Files and Text
+
+### Finding Files (`find`)
+Search the filesystem for files matching a pattern.
+```bash
+# Find all files ending in .phar inside /home/steve
+find /home/steve -name "*.phar"
+```
+
+### Finding Text (`grep`)
+`grep` searches inside files for specific text.
+```bash
+# Search for "Error" in server.log
+grep "Error" server.log
+
+# Search for "Error" recursively in all logs
+grep -r "Error" /var/log/
+
+# Combine commands with a Pipe (|)
+# This lists all files, and then filters the output to only show "world"
+ls -la | grep "world"
+```
+
+## Archiving and Compressing
+
+You will frequently need to zip up worlds or plugins.
+
+### Tar (Tape Archive)
+`tar` is the standard Linux archiving tool. It combines files and optionally compresses them.
+
+```bash
+# Create a compressed archive (c=create, z=gzip, v=verbose, f=file)
+tar -czvf backup.tar.gz /home/steve/worlds/
+
+# Extract an archive (x=extract)
+tar -xzvf backup.tar.gz -C /home/steve/restore_folder/
+```
+
+### Zip
+Sometimes you just need standard zip files.
+```bash
+# Install zip tools if missing
+sudo apt install zip unzip
+
+# Zip a folder recursively
+zip -r plugins.zip /home/steve/plugins/
+
+# Unzip
+unzip plugins.zip
 ```
 
 ---
-
-## 2. Command-Line Reference (High Detail)
-
-### File & Directory Management
-
-#### 1. `ls` (List)
-List files and folders in the current directory.
-- **Usage**: `ls [options]`
-- **Common Flags**:
-  - `ls -l`: Long format (shows permissions, owner, size, modification date).
-  - `ls -a`: Show hidden files (files starting with a dot, e.g., `.htaccess` or `.gitignore`).
-  - `ls -la`: Combine long format and hidden files.
-
-#### 2. `cd` (Change Directory)
-Navigate between directories.
-- **Usage**: `cd [path]`
-- **Examples**:
-  - `cd pmmp-server`: Move into the `pmmp-server` directory.
-  - `cd ..`: Move up one folder level.
-  - `cd ~`: Jump directly to the user's home directory.
-
-#### 3. `pwd` (Print Working Directory)
-Display the absolute file path of your current folder.
-- **Usage**: `pwd`
-
-#### 4. `mkdir` (Make Directory)
-Create one or multiple new folders.
-- **Usage**: `mkdir [folder_name]`
-- **Flags**: `mkdir -p parent/child` (creates parent directories if they don't exist).
-
-#### 5. `rm` (Remove)
-Delete files or folders.
-- **Usage**: `rm [options] [target]`
-- **Flags**:
-  - `rm -r`: Deletes recursively (required for folders).
-  - `rm -f`: Force delete (ignores warnings).
-  - `rm -rf`: Deletes folders recursively and forcefully. **Use with extreme caution!**
-
----
-
-### Process & Session Management
-
-To run your game servers continuously in the background, you must manage terminal sessions using `screen` or `systemd`.
-
-#### 1. `screen` (Terminal Multiplexer)
-Allows you to start a terminal screen, run the server, detach, and close your SSH client without stopping the server.
-- **Usage**:
-  - `screen -S [name]`: Start a new screen session with a custom name.
-  - `Ctrl + A` then `D`: Detach from the active screen session.
-  - `screen -ls`: List active screen sessions.
-  - `screen -r [name]`: Resume/reattach to a background session.
-
----
-
-### System Monitoring
-
-#### 1. `htop` (Interactive Process Viewer)
-Monitor CPU cores, RAM usage, and running processes in real-time. Extremely useful for identifying lag spikes.
-- **Usage**: `htop`
-
-#### 2. `df -h` (Disk Free)
-Show available disk space in human-readable formats (GB/MB).
-- **Usage**: `df -h`
-
----
-
-## 3. Test Your Linux Knowledge!
-
-Take this comprehensive 10-question quiz to test your system administration skills!
 
 import Quiz from '@site/src/components/Quiz';
 
 <Quiz questions={[
   {
-    question: "Which Linux directory is typically used to store user home folders (e.g. /home/zyro)?",
-    options: [
-      "/var",
-      "/etc",
-      "/home",
-      "/usr"
-    ],
-    correctAnswer: 2,
-    explanation: "/home contains the personal directories for normal system users."
-  },
-  {
-    question: "What does the '-a' flag do in the 'ls' command?",
-    options: [
-      "Sorts files alphabetically.",
-      "Displays file sizes in megabytes.",
-      "Lists all files, including hidden files starting with a dot.",
-      "Deletes all files in the folder."
-    ],
-    correctAnswer: 2,
-    explanation: "The -a (all) flag shows hidden files, which are hidden by default in Linux."
-  },
-  {
-    question: "Which command is used to display the absolute path of the current directory?",
-    options: [
-      "cd",
-      "pwd",
-      "path",
-      "dir"
-    ],
+    question: "In the Linux file hierarchy, what does the '/' directory represent?",
+    options: ["The home directory", "The root directory", "The temporary directory", "The boot drive"],
     correctAnswer: 1,
-    explanation: "pwd (print working directory) displays the full absolute path from the root directory."
+    explanation: "The '/' directory is the absolute root of the Linux filesystem. All other directories and drives branch off from here."
   },
   {
-    question: "Which command deletes a folder named 'old-server' and all its contents recursively and forcefully?",
-    options: [
-      "rm old-server",
-      "rmdir old-server",
-      "rm -rf old-server",
-      "del /s old-server"
-    ],
+    question: "Which command would you use to find out what directory you are currently in?",
+    options: ["cd", "dir", "pwd", "whereami"],
     correctAnswer: 2,
-    explanation: "rm -rf is the recursive and force flag combo required to delete non-empty directories."
+    explanation: "pwd stands for Print Working Directory, and it outputs the absolute path of your current location."
   },
   {
-    question: "How do you detach from an active 'screen' session without stopping the process running inside it?",
-    options: [
-      "Press Ctrl + C",
-      "Type 'exit' and press Enter",
-      "Press Ctrl + A, then D",
-      "Close the terminal window immediately"
-    ],
+    question: "What does the -r or -R flag typically mean in commands like rm, cp, and chown?",
+    options: ["Read-only", "Remove", "Recursive", "Restore"],
     correctAnswer: 2,
-    explanation: "Ctrl + A followed by D safely detaches the screen session, moving it to the background."
+    explanation: "Recursive means the command will apply to the specified directory AND all files and subdirectories contained within it."
   },
   {
-    question: "Which command is used to monitor CPU, RAM, and active processes interactively in real-time?",
-    options: [
-      "htop",
-      "df -h",
-      "free",
-      "ps aux"
-    ],
-    correctAnswer: 0,
-    explanation: "htop provides a colorful, interactive process monitoring dashboard directly in the terminal."
-  },
-  {
-    question: "What does the command 'cd ~' accomplish?",
-    options: [
-      "Moves up to the root directory.",
-      "Navigates to the user's home directory.",
-      "Moves to the previous directory.",
-      "Closes the SSH connection."
-    ],
+    question: "Which command is used to view the last few lines of a file and actively monitor it for new lines?",
+    options: ["head -f", "tail -f", "cat -live", "less -w"],
     correctAnswer: 1,
-    explanation: "The tilde (~) represents the current logged-in user's home folder."
+    explanation: "tail -f (follow) outputs the end of a file and stays open, printing new lines to the console as they are appended to the file."
   },
   {
-    question: "In system monitoring, what does the command 'df -h' measure?",
-    options: [
-      "Free memory (RAM).",
-      "Remaining disk storage space in human-readable formats.",
-      "Active processor count.",
-      "Internet bandwidth speeds."
-    ],
-    correctAnswer: 1,
-    explanation: "df stands for disk free, and the -h flag formats bytes into gigabytes (GB) and megabytes (MB)."
-  },
-  {
-    question: "Which command is used to resume a detached screen session named 'lobby'?",
-    options: [
-      "screen -S lobby",
-      "screen -r lobby",
-      "screen -ls lobby",
-      "screen -d lobby"
-    ],
-    correctAnswer: 1,
-    explanation: "screen -r (resume) is used to reattach to an existing background screen session."
-  },
-  {
-    question: "What is the primary benefit of hosting game servers on Linux compared to Windows?",
-    options: [
-      "Linux supports more players natively without code edits.",
-      "Linux has no graphics card requirements.",
-      "Linux has minimal GUI overhead, leaving almost all system resources for server performance.",
-      "Linux is completely immune to cyber attacks."
-    ],
+    question: "In nano, what is the keyboard shortcut to save your file?",
+    options: ["Ctrl+S", "Ctrl+X", "Ctrl+O", "Ctrl+W"],
     correctAnswer: 2,
-    explanation: "A headless Linux installation runs without a resource-heavy GUI, dedicating maximum CPU and RAM to the game server."
+    explanation: "Ctrl+O stands for 'Write Out' in nano, which saves the file to disk."
+  },
+  {
+    question: "If a file has the permissions '-rwxr-xr--', who has the ability to write to or modify the file?",
+    options: ["Everyone", "The Group", "Only the Owner", "Nobody"],
+    correctAnswer: 2,
+    explanation: "The first set of three (rwx) belongs to the Owner. The group has (r-x) and others have (r--), so only the owner has the 'w' (write) permission."
+  },
+  {
+    question: "What numeric value represents 'Read and Write' permissions but NOT 'Execute'?",
+    options: ["7", "6", "5", "4"],
+    correctAnswer: 1,
+    explanation: "Read is 4, Write is 2. 4 + 2 = 6."
+  },
+  {
+    question: "Which command would you use to change the owner of a file named 'config.yml' to a user named 'admin'?",
+    options: ["chmod admin config.yml", "chown admin config.yml", "owner admin config.yml", "sudo admin config.yml"],
+    correctAnswer: 1,
+    explanation: "chown (Change Owner) is used to modify the user and group ownership of files and directories."
+  },
+  {
+    question: "What symbol is used to 'pipe' the output of one command into the input of another command?",
+    options: [">", "<", "|", "&"],
+    correctAnswer: 2,
+    explanation: "The pipe symbol (|) takes the standard output of the command on the left and feeds it as standard input to the command on the right."
+  },
+  {
+    question: "Which command creates a compressed tarball archive of a directory?",
+    options: ["tar -xzvf", "tar -czvf", "zip -compress", "tar -extract"],
+    correctAnswer: 1,
+    explanation: "-c creates an archive, -z compresses it with gzip, -v makes it verbose, and -f specifies the filename."
   }
 ]} />

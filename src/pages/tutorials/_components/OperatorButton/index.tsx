@@ -7,14 +7,13 @@ import styles from './styles.module.css';
 export default function OperatorButton() {
   const id = useId();
   const [operator, toggleOperator] = useOperator();
-  // TODO add translations
   return (
-    <>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
       <input
         id={id}
         type="checkbox"
         className="screen-reader-only"
-        aria-label="Toggle between or and and for the tags you selected"
+        aria-label="Toggle between OR and AND for filtering tags"
         checked={operator === 'AND'}
         onChange={toggleOperator}
         onKeyDown={(e) => {
@@ -29,6 +28,6 @@ export default function OperatorButton() {
         <span className={styles.checkboxLabelAnd}>AND</span>
         {/* eslint-enable @docusaurus/no-untranslated-text */}
       </label>
-    </>
+    </div>
   );
 }

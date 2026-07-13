@@ -55,16 +55,6 @@ function TutorialCard({tutorial}: {tutorial: Tutorial}) {
 					{tutorial.tags.includes('favorite') && (
 						<FavoriteIcon size="medium" style={{marginRight: '0.25rem'}} />
 					)}
-					{tutorial.source && (
-						<Link
-							href={tutorial.source}
-							className={clsx(
-								'button button--secondary button--sm',
-								styles.tutorialCardSrcBtn,
-							)}>
-							<Translate id="tutorial.card.sourceLink">source</Translate>
-						</Link>
-					)}
 				</div>
 				<p className={styles.tutorialCardBody}>{tutorial.description}</p>
 			</div>

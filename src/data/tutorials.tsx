@@ -34,21 +34,21 @@ const Tutorials: Tutorial[] = [
   {
     title: 'PHP OOP Fundamentals',
     description: 'Learn classes, interfaces, inheritance, namespaces, strict typing, and design patterns used in real plugin codebases.',
-    website: 'php',
+    website: 'php/introduction',
     source: ' ',
     tags: ['development'],
   },
   {
     title: 'Python Scripting',
     description: 'Automate server workflows, generate config templates, and build admin tools with Python scripts.',
-    website: 'python',
+    website: 'python/introduction',
     source: ' ',
     tags: ['development'],
   },
   {
     title: 'Linux & Server Administration',
     description: 'Master the command line, process management, networking, and hosting for production game servers.',
-    website: 'linux',
+    website: 'linux/introduction',
     source: ' ',
     tags: ['serversetup'],
   }
