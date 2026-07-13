@@ -58,6 +58,27 @@ const Tutorials: Tutorial[] = [
     website: 'dragonfly',
     source: ' ',
     tags: ['development'],
+  },
+  {
+    title: 'PHP OOP Basics',
+    description: 'Master Object-Oriented Programming (OOP) in PHP for plugin making',
+    website: 'php',
+    source: ' ',
+    tags: ['development'],
+  },
+  {
+    title: 'Python Scripting',
+    description: 'Automate Minecraft Bedrock servers using Python scripts',
+    website: 'python',
+    source: ' ',
+    tags: ['development'],
+  },
+  {
+    title: 'Linux Server Setup',
+    description: 'Learn how to host and optimize Bedrock servers on Linux',
+    website: 'linux',
+    source: ' ',
+    tags: ['serversetup'],
   }
 ];
 

@@ -13,7 +13,8 @@ export function useSearchName() {
 }
 
 export function useTags() {
-  return useQueryStringList('tags');
+  const [tags, setTags] = useQueryStringList('tags');
+  return [tags ?? [], setTags] as const;
 }
 
 type Operator = 'OR' | 'AND';
