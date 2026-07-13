@@ -7,7 +7,7 @@ import tailwindPlugin from "./plugins/tailwind-config.cjs";
 const config: Config = {
 	title: 'ZyroNetwork School',
 	tagline: 'A Website To Teach Everything About PocketMine-MP by ZyroNetwork',
-	favicon: 'img/favicon.ico',
+	favicon: 'img/zyro_logo.png',
 
 	// Set the production url of your site here
 	url: 'https://ZyroNetworkMC.github.io',
@@ -91,7 +91,7 @@ const config: Config = {
 					label: 'Blogs',
 				},
 				{
-					href: 'https://github.com/ZyroNetworkMC/PocketMine-MP', 
+					href: 'https://github.com/ZyroNetworkMC', 
 					position: 'right',
 					className: 'github-icon pseudo-icon',
 				},
@@ -122,7 +122,7 @@ const config: Config = {
 					items: [
 						{
 							label: 'Github',
-							href: 'https://github.com/ZyroNetworkMC/PocketMine-MP',
+							href: 'https://github.com/ZyroNetworkMC',
 						},
 					],
 				},
