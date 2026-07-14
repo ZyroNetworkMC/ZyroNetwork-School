@@ -23,7 +23,7 @@ const Tutorials: Tutorial[] = [
   {
     title: 'Linux Fundamentals',
     description: 'Master the command line, process management, and server administration.',
-    website: 'linux/introduction',
+    website: 'linux/basics/introduction',
     source: ' ',
     tags: ['serversetup'],
     section: 'courses'

@@ -253,7 +253,7 @@ export default function Home(): JSX.Element {
                     Learn Linux server setup and Bash scripting. Master terminal multiplexing, secure SSH connections, and resource monitoring tools.
                   </p>
                 </div>
-                <Link to="/docs/linux/introduction" style={{ color: '#a855f7', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <Link to="/docs/linux/basics/introduction" style={{ color: '#a855f7', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                   Explore Linux &rarr;
                 </Link>
               </div>
