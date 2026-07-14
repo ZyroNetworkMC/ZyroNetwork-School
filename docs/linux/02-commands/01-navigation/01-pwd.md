@@ -1,396 +1,787 @@
 ---
-title: Linux ls Command
-description: Learn how to list files and directories using the ls command.
+title: Linux pwd Command
+sidebar_position: 1
+description: Learn how to use the pwd command in Linux to display the current working directory.
 ---
-# Linux ls Command
-## What is ls?
-The `ls` command is used to list files and directories.
+
+# Linux `pwd` Command
+
+The `pwd` command is one of the simplest yet most important Linux commands.
+
+It allows you to see your **current location** inside the Linux filesystem.
+
+As a Linux administrator, developer, ethical hacker, or server owner, you will use this command extremely frequently.
+
 ---
+
+# What Does PWD Mean?
+
+`pwd` stands for:
+
+```text
+Print Working Directory
+```
+
+The command prints the absolute path of the directory you are currently working in.
+
+---
+
+# Why is `pwd` Important?
+
+Linux systems can contain thousands or even millions of files and directories.
+
+Before performing operations like:
+
+- Deleting files
+- Moving files
+- Creating backups
+- Editing configurations
+
+You should always know your current location.
+
+Using the wrong directory can accidentally damage your system.
+
+---
+
 # Syntax
+
 ```bash
-ls [OPTIONS] [FILE/DIRECTORY]
+pwd [OPTION]
 ```
+
 ---
-# Basic Example
+
+# Basic Usage
+
 ```bash
-ls
+pwd
 ```
+
+Example Output:
+
+```text
+/home/aayan
+```
+
+This means your current working directory is:
+
+```text
+/
+└── home
+    └── aayan
+```
+
+---
+
+# Understanding Current Working Directory
+
+Every terminal session always has one active directory.
+
+Example:
+
+```bash
+pwd
+```
+
 Output:
+
 ```text
-Documents Downloads Pictures Music
+/home/aayan
 ```
----
-# Command Flags
-| Flag | Full Form | Description |
-|------|------------|-------------|
-| `-a` | all | Show hidden files |
-| `-l` | long | Long listing format |
-| `-h` | human-readable | Human readable sizes |
-| `-R` | recursive | Show subdirectories recursively |
-| `-t` | time | Sort by modification time |
-| `-S` | size | Sort by file size |
-| `-r` | reverse | Reverse sorting |
-| `-i` | inode | Display inode numbers |
-| `-d` | directory | List directory itself |
-| `-F` | classify | Append indicators |
-| `--color` | color | Colored output |
-| `--help` | help | Show help |
----
-# ls -a
-Shows hidden files.
-Example:
+
+Now move:
+
 ```bash
-ls -a
+cd Documents
+pwd
 ```
+
 Output:
+
 ```text
-.
-..
-.bashrc
-.profile
-Documents
+/home/aayan/Documents
 ```
+
 ---
-# Why Hidden Files Matter
-Linux configuration files usually begin with:
+
+# Visual Representation
+
 ```text
-.
+Linux Filesystem
+
+/
+├── home
+│   └── aayan
+│       ├── Documents
+│       ├── Downloads
+│       └── Projects
+├── etc
+├── var
+└── root
 ```
-Examples:
+
+If you are inside:
+
 ```text
-.bashrc
-.gitconfig
-.ssh
+/home/aayan/Projects
 ```
----
-# ls -l
-Long listing format.
-Example:
+
+Then:
+
 ```bash
-ls -l
+pwd
 ```
+
+will output:
+
+```text
+/home/aayan/Projects
+```
+
+---
+
+# Command Options
+
+The `pwd` command only contains a few options.
+
+---
+
+# `pwd -L`
+
+### Meaning
+
+```text
+Logical Path
+```
+
+Displays the path exactly as you navigated to it.
+
+---
+
+### Syntax
+
+```bash
+pwd -L
+```
+
+---
+
+### Example
+
+Suppose:
+
+```bash
+ln -s /home/aayan/projects /home/aayan/dev
+```
+
+Move into:
+
+```bash
+cd dev
+```
+
+Run:
+
+```bash
+pwd -L
+```
+
 Output:
+
 ```text
-drwxr-xr-x 2 aayan users 4096 Jul 14 Documents
--rw-r--r-- 1 aayan users 1254 Jul 14 test.txt
+/home/aayan/dev
 ```
+
 ---
-# Understanding ls -l Output
+
+# `pwd -P`
+
+### Meaning
+
 ```text
-drwxr-xr-x
+Physical Path
 ```
-Breakdown:
-```text
-d         → Directory
-rwx       → Owner permissions
-r-x       → Group permissions
-r-x       → Others permissions
-```
+
+Displays the actual directory by resolving symbolic links.
+
 ---
-```text
-2
-```
-Number of links.
----
-```text
-aayan
-```
-Owner.
----
-```text
-users
-```
-Group.
----
-```text
-4096
-```
-File size.
----
-```text
-Jul 14
-```
-Modification date.
----
-```text
-Documents
-```
-Filename.
----
-# ls -lh
-Human readable sizes.
-Example:
+
+### Syntax
+
 ```bash
-ls -lh
+pwd -P
 ```
+
+---
+
+### Example
+
+Current:
+
+```bash
+cd dev
+```
+
+Run:
+
+```bash
+pwd -P
+```
+
 Output:
+
 ```text
-1.2K notes.txt
-450M backup.zip
-2.1G world.tar.gz
+/home/aayan/projects
 ```
-Without:
-```bash
-ls -l
-```
-Output:
-```text
-2147483648 world.tar.gz
-```
+
 ---
-# ls -la
-Most commonly used option.
-Example:
-```bash
-ls -la
-```
-Shows:
-- Hidden files
-- Permissions
-- Ownership
-- Sizes
----
-# ls -R
-Recursive listing.
-Example:
-```bash
-ls -R
-```
-Output:
-```text
-Projects:
-website
-server
-website:
-index.php
-```
----
-# ls -t
-Sort by newest files.
-Example:
-```bash
-ls -lt
-```
-Useful for:
-- Logs
-- Development
-- Server management
----
-# ls -S
-Sort by size.
-Example:
-```bash
-ls -lS
-```
-Useful for finding huge files.
----
-# ls -r
-Reverse sorting.
-Example:
-```bash
-ls -lr
-```
----
-# ls -i
-Display inode numbers.
-Example:
-```bash
-ls -i
-```
-Output:
-```text
-123456 file.txt
-```
-Useful for:
-- Forensics
-- Hard links
-- Filesystem debugging
----
-# ls -d
-List directory itself.
-Example:
-```bash
-ls -ld /etc
-```
-Without `-d`, contents of `/etc` may be listed.
----
-# ls -F
-Classify files.
-Example:
-```bash
-ls -F
-```
-Output:
-```text
-Documents/
-script.sh*
-link@
-```
-Meaning:
-| Symbol | Meaning |
+
+# Difference Between `-L` and `-P`
+
+| Option | Meaning |
 |---------|----------|
-| `/` | Directory |
-| `*` | Executable |
-| `@` | Symbolic Link |
+| `pwd -L` | Show logical path |
+| `pwd -P` | Show physical path |
+
 ---
-# Combining Flags
-Linux allows multiple flags.
-Example:
+
+# Real Symbolic Link Example
+
+Create directory:
+
 ```bash
-ls -lah
+mkdir real_folder
 ```
-Equivalent:
+
+Create symbolic link:
+
 ```bash
-ls -l -a -h
+ln -s real_folder shortcut
 ```
+
+Move:
+
+```bash
+cd shortcut
+```
+
 ---
-# Most Common Combinations
-### Show everything
+
+### Logical Path
+
 ```bash
-ls -lah
+pwd
 ```
----
-### Sort by time
-```bash
-ls -lht
-```
----
-### Sort by size
-```bash
-ls -lhS
-```
----
-### Recursive listing
-```bash
-ls -laR
-```
----
-# Real World Examples
----
-## PocketMine Server
-```bash
-ls -lah plugins/
-```
+
 Output:
+
 ```text
-BedWars.phar
-EconomyAPI.phar
-ScoreHud.phar
+/home/aayan/shortcut
 ```
+
 ---
-## Logs
+
+### Physical Path
+
 ```bash
-ls -lt logs/
+pwd -P
 ```
-Newest logs appear first.
+
+Output:
+
+```text
+/home/aayan/real_folder
+```
+
 ---
-## Large Worlds
+
+# Practical Examples
+
+---
+
+## Example 1
+
+Check current directory:
+
 ```bash
-ls -lhS worlds/
+pwd
 ```
-Find biggest worlds.
+
+Output:
+
+```text
+/home/aayan
+```
+
 ---
-## VPS Administration
+
+## Example 2
+
+Move to Downloads:
+
 ```bash
-ls -lah /var/www/html
+cd Downloads
+pwd
 ```
-Verify website files.
+
+Output:
+
+```text
+/home/aayan/Downloads
+```
+
 ---
+
+## Example 3
+
+Move to root:
+
+```bash
+cd /
+pwd
+```
+
+Output:
+
+```text
+/
+```
+
+---
+
+## Example 4
+
+Move to logs:
+
+```bash
+cd /var/log
+pwd
+```
+
+Output:
+
+```text
+/var/log
+```
+
+---
+
+# Understanding Absolute Paths
+
+`pwd` always returns an **absolute path**.
+
+Absolute paths always begin with:
+
+```text
+/
+```
+
+Examples:
+
+```text
+/home
+/etc
+/var/log
+/usr/bin
+```
+
+---
+
+# PWD and Relative Paths
+
+Suppose:
+
+Current directory:
+
+```text
+/home/aayan
+```
+
+Execute:
+
+```bash
+cd Documents
+```
+
+Linux automatically interprets it as:
+
+```text
+/home/aayan/Documents
+```
+
+Use:
+
+```bash
+pwd
+```
+
+to verify your location.
+
+---
+
+# Real Server Examples
+
+---
+
+# PocketMine-MP Hosting
+
+Server location:
+
+```text
+/home/minecraft/server
+```
+
+Verify:
+
+```bash
+cd /home/minecraft/server
+pwd
+```
+
+Output:
+
+```text
+/home/minecraft/server
+```
+
+---
+
+# Plugins Directory
+
+```bash
+cd plugins
+pwd
+```
+
+Output:
+
+```text
+/home/minecraft/server/plugins
+```
+
+---
+
+# World Folder
+
+```bash
+cd worlds
+pwd
+```
+
+Output:
+
+```text
+/home/minecraft/server/worlds
+```
+
+---
+
+# Web Hosting Example
+
+Website files:
+
+```text
+/var/www/html
+```
+
+Check location:
+
+```bash
+cd /var/www/html
+pwd
+```
+
+---
+
+# PHP Configuration Example
+
+```bash
+cd /etc/php
+pwd
+```
+
+---
+
+# Nginx Example
+
+```bash
+cd /etc/nginx
+pwd
+```
+
+---
+
+# Ethical Hacking Example
+
+Move to wordlists:
+
+```bash
+cd /usr/share/wordlists
+pwd
+```
+
+Output:
+
+```text
+/usr/share/wordlists
+```
+
+---
+
 # Common Mistakes
-### Forgetting hidden files
+
+---
+
+## Mistake 1
+
+Deleting files without checking location.
+
+Example:
+
 ```bash
-ls
+rm -rf *
 ```
-won't show:
+
+Always verify first:
+
+```bash
+pwd
+```
+
+---
+
+## Mistake 2
+
+Confusing:
+
 ```text
-.htaccess
-.env
-.git
+/
 ```
-Use:
-```bash
-ls -a
+
+with:
+
+```text
+/root
 ```
+
+Remember:
+
+| Directory | Meaning |
+|------------|----------|
+| `/` | Root filesystem |
+| `/root` | Root user's home |
+
 ---
-### Reading huge sizes
-Use:
+
+## Mistake 3
+
+Getting lost in deeply nested directories.
+
+Solution:
+
 ```bash
-ls -lh
+pwd
 ```
+
 ---
-### Missing permissions
-Use:
+
+# Combining Commands
+
+Example:
+
 ```bash
-ls -l
+cd Documents && pwd
 ```
+
+Output:
+
+```text
+/home/aayan/Documents
+```
+
 ---
+
+Example:
+
+```bash
+mkdir Test && cd Test && pwd
+```
+
+Output:
+
+```text
+/home/aayan/Test
+```
+
+---
+
+# Command Flags Summary
+
+| Command | Description |
+|----------|-------------|
+| `pwd` | Print current directory |
+| `pwd -L` | Display logical path |
+| `pwd -P` | Display physical path |
+
+---
+
 # Interview Questions
-### What does `ls` do?
-Lists files and directories.
+
 ---
-### What does `ls -a` do?
-Shows hidden files.
+
+### What does `pwd` stand for?
+
+Answer:
+
+```text
+Print Working Directory
+```
+
 ---
-### Difference between `ls -l` and `ls -lh`?
-`-h` makes sizes human readable.
+
+### Does `pwd` display relative paths?
+
+No.
+
+It always displays absolute paths.
+
 ---
-### What does `ls -i` show?
-Inode numbers.
+
+### Difference between `pwd -L` and `pwd -P`?
+
+`-L`:
+
+```text
+Logical path
+```
+
+`-P`:
+
+```text
+Physical path
+```
+
 ---
+
+### Why is `pwd` important?
+
+To verify location before performing operations.
+
+---
+
 # Exercises
-1. Show hidden files.
-```bash
-ls -a
-```
-2. Show permissions.
-```bash
-ls -l
-```
-3. Show file sizes.
-```bash
-ls -lh
-```
-4. Sort by newest.
-```bash
-ls -lt
-```
-5. Sort by size.
-```bash
-ls -lhS
-```
+
 ---
-# Practice Lab
+
+## Exercise 1
+
+Display your current directory.
+
+```bash
+pwd
+```
+
+---
+
+## Exercise 2
+
+Navigate to:
+
+```text
+/etc
+```
+
+Then display location.
+
+---
+
+## Exercise 3
+
+Navigate to:
+
+```text
+/var/log
+```
+
+Then print directory.
+
+---
+
+## Exercise 4
+
 Create:
+
 ```bash
-mkdir LinuxLab
-cd LinuxLab
-touch file1.txt
-touch file2.txt
-mkdir Projects
-mkdir Scripts
+mkdir -p Linux/Test/Folder
 ```
-Try:
+
+Move there and run:
+
 ```bash
-ls
-ls -l
-ls -la
-ls -lah
-ls -R
-ls -lhS
+pwd
 ```
+
 ---
-# Command Summary
-| Command | Purpose |
-|----------|----------|
-| `ls` | List files |
-| `ls -a` | Hidden files |
-| `ls -l` | Detailed listing |
-| `ls -lh` | Human readable sizes |
-| `ls -la` | Detailed + hidden |
-| `ls -R` | Recursive |
-| `ls -lt` | Sort by time |
-| `ls -lhS` | Sort by size |
-| `ls -i` | Inodes |
+
+## Exercise 5
+
+Create symbolic links and test:
+
+```bash
+pwd -L
+pwd -P
+```
+
 ---
+
+# Mini Project
+
+Create:
+
+```text
+LinuxLab
+├── Documents
+├── Projects
+└── Scripts
+```
+
+Navigate through all directories and use `pwd` to understand Linux paths.
+
+---
+
+# Key Takeaways
+
+✅ `pwd` means **Print Working Directory**
+
+✅ Displays your current location.
+
+✅ Returns an absolute path.
+
+✅ Useful for system administration, ethical hacking and server management.
+
+✅ Always use `pwd` before dangerous commands like:
+
+```bash
+rm
+mv
+cp
+chmod
+```
+
+---
+
+# Summary
+
+The `pwd` command is simple but extremely important.
+
+Understanding your current location inside Linux is essential before performing any administrative task.
+
+Mastering `pwd` will make learning other Linux commands much easier.
+
+---
+
 # Next Chapter
-➡ Linux `cd` Command
+
+➡ Linux `ls` Command
+
+Learn how to list files and directories in Linux.
