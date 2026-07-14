@@ -17,7 +17,7 @@ const Tutorials: Tutorial[] = [
     description: 'Learn PHP fundamentals, OOP principles, and modern backend development practices.',
     website: 'php/fundamentals/introduction',
     source: ' ',
-    tags: ['development'],
+    tags: ['development', 'programming'],
     section: 'courses'
   },
   {
@@ -33,7 +33,7 @@ const Tutorials: Tutorial[] = [
     description: 'Automate workflows, build tools, and learn modern Python programming.',
     website: 'python/introduction',
     source: ' ',
-    tags: ['development'],
+    tags: ['development', 'programming'],
     section: 'courses'
   },
   {
@@ -41,7 +41,7 @@ const Tutorials: Tutorial[] = [
     description: 'Master Object-Oriented Programming and robust enterprise Java architecture.',
     website: 'java/introduction',
     source: ' ',
-    tags: ['development'],
+    tags: ['development', 'programming'],
     section: 'courses'
   },
   {
@@ -49,7 +49,7 @@ const Tutorials: Tutorial[] = [
     description: 'Learn penetration testing, vulnerabilities, and offensive security techniques.',
     website: 'ethical-hacking/introduction',
     source: ' ',
-    tags: ['development'],
+    tags: ['security'],
     section: 'courses'
   },
   {
@@ -57,7 +57,7 @@ const Tutorials: Tutorial[] = [
     description: 'Defend infrastructure, configure firewalls, and implement security best practices.',
     website: 'cybersecurity/introduction',
     source: ' ',
-    tags: ['serversetup'],
+    tags: ['serversetup', 'security'],
     section: 'courses'
   },
   
@@ -93,7 +93,9 @@ export type TagType =
   | 'api'
   | 'development'
   | 'serversetup'
-  | 'client';
+  | 'client'
+  | 'security'
+  | 'programming';
 
 export type Tag = {
   label: string;
@@ -142,6 +144,24 @@ export const Tags: {[type in TagType]: Tag} = {
       id: 'tutorial.tag.client.description',
     }),
     color: '#f59e0b',
+  },
+
+  security: {
+    label: translate({message: 'Security'}),
+    description: translate({
+      message: 'Cybersecurity and ethical hacking',
+      id: 'tutorial.tag.security.description',
+    }),
+    color: '#ef4444',
+  },
+
+  programming: {
+    label: translate({message: 'Programming'}),
+    description: translate({
+      message: 'General programming languages and paradigms',
+      id: 'tutorial.tag.programming.description',
+    }),
+    color: '#3b82f6',
   },
 };
 
