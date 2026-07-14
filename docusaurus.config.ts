@@ -23,7 +23,19 @@ const config: Config = {
 	markdown: {
 		mermaid: true,
 	},
-	themes: ['@docusaurus/theme-mermaid'],
+	themes: [
+		'@docusaurus/theme-mermaid',
+		[
+			'@easyops-cn/docusaurus-search-local',
+			{
+				hashed: true,
+				indexDocs: true,
+				indexBlog: true,
+				indexPages: true,
+				language: ["en"],
+			}
+		]
+	],
 
 	// Even if you don't use internationalization, you can use this field to set
 	// useful metadata like html lang. For example, if your site is Chinese, you
